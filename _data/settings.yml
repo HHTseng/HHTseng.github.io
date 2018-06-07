@@ -9,8 +9,8 @@ email: thuanhsi@umich.edu
 
 menu:
 - {name: About Me, url: '#about-me'}
-- {name: Work, url: '#work'}
-- {name: Clients, url: '#clients'}
+- {name: Machine Learning, url: '#work'}
+- {name: Fun Stuff, url: '#clients'}
 - {name: Contact, url: '#contact'}
 
 #-------------------------------
