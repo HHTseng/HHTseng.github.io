@@ -38,7 +38,7 @@ $$
 $$
 
 
-![Typo International]({{ site.github.url }}/assets/img/work/proj-1/reinforcement_2.png)
+![Typo International]({{ site.github.url }}/assets/img/work/proj-1/reinforcement_1.png)
 ![Typo International]({{ site.github.url }}/assets/img/work/proj-1/img3.jpg)
 ![Typo International]({{ site.github.url }}/assets/img/work/proj-1/img4.jpg)
 ![Typo International]({{ site.github.url }}/assets/img/work/proj-1/img5.jpg)
