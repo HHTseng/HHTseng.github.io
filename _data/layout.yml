@@ -14,7 +14,6 @@ accent: "#4c4c4c"
 
 textColor: "#666"
 headlineColor: "#333"
-# bgcolor: "#e5eaee"
-bgcolor: "#fff"
+bgcolor: "#e5eaee"
 documentBackgroundColor: "#fff"
 markdown: kramdown

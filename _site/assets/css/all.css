@@ -593,7 +593,7 @@ fieldset {
   h3 {
     padding: 50px 0 50px; } }
 section:nth-child(odd) {
-  background: #fff;
+  background: #e5eaee;
   padding-bottom: 100px; }
   section:nth-child(odd) h3 {
     color: #584945; }
@@ -724,7 +724,7 @@ footer {
   .face-lockup [class^="icon-"] {
     height: 100px;
     width: 100px;
-    background: #fff;
+    background: #e5eaee;
     border-radius: 50%; }
     .face-lockup [class^="icon-"] path {
       fill: #4c4c4c; }
@@ -813,7 +813,7 @@ footer {
         margin: 2px; }
 
 .skill-lockup .skill-icons.skill-1 span:nth-child(n+2), .skill-lockup .skill-icons.skill-2 span:nth-child(n+3), .skill-lockup .skill-icons.skill-3 span:nth-child(n+4), .skill-lockup .skill-icons.skill-4 span:nth-child(n+5), .skill-lockup .skill-icons.skill-5 span:nth-child(n+6), .skill-lockup .skill-icons.skill-6 span:nth-child(n+7), .skill-lockup .skill-icons.skill-7 span:nth-child(n+8), .skill-lockup .skill-icons.skill-8 span:nth-child(n+9), .skill-lockup .skill-icons.skill-9 span:nth-child(n+10), .skill-lockup .skill-icons.skill-10 span:nth-child(n+11) {
-  background: #fff; }
+  background: #e5eaee; }
 
 @media screen and (max-width: 541px) {
   .skill-lockup {
@@ -1106,7 +1106,7 @@ footer {
     height: 16px;
     width: 16px;
     border-radius: 50%;
-    border: solid 2px #fff;
+    border: solid 2px #e5eaee;
     margin: 0px 10px;
     cursor: pointer; }
     .clients-mobile-nav span.active-client {
@@ -1280,7 +1280,7 @@ form {
   form [type="submit"] {
     width: 100%; } }
 .form-success {
-  background: #fff;
+  background: #e5eaee;
   text-align: center; }
   .form-success p {
     font-size: 18px; }
