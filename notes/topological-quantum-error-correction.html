@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Error corrections in view of algebraic topology — Huan-Hsin Tseng</title>
+  <meta name="description" content="Research notes on cellular topology, quotient and relative homology, and the derivation of surface-code checks, syndromes, and logical operators with explicit map domains.">
+  <meta name="author" content="Huan-Hsin Tseng">
+  <meta name="theme-color" content="#0e0d1f">
+  <link rel="canonical" href="https://hhtseng.github.io/notes/topological-quantum-error-correction.html">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <script>
+    (function () {
+      document.documentElement.classList.add('js');
+      try {
+        var theme = localStorage.getItem('theme');
+        if (theme === 'light' || theme === 'dark') document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&display=swap">
+  <link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <script defer src="../assets/vendor/katex/katex.min.js"></script>
+  <script defer src="../assets/vendor/katex/contrib/auto-render.min.js"></script>
+  <script defer src="../assets/js/site.js"></script>
+</head>
+<body class="note-page">
+<a class="skip-link" href="#note">Skip to note</a>
+<nav class="site-nav" aria-label="Note navigation">
+  <a class="nav-name" href="../index.html">Huan-Hsin Tseng</a>
+  <div class="nav-links">
+    <a href="../index.html#notes">Research notes</a>
+    <button class="theme-toggle" type="button" aria-label="Switch to light theme" title="Toggle light / dark">
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+    </button>
+  </div>
+  <span class="nav-progress" aria-hidden="true"></span>
+</nav>
+<main class="note-main" id="note">
+<article class="note-article" aria-labelledby="note-title">
+  <header class="note-header">
+    <p class="kicker">Research notes · Quantum error correction</p>
+    <h1 id="note-title">Error corrections in view of algebraic topology</h1>
+    <p class="note-deck">From spaces and quotient maps to syndromes and logical operators.</p>
+    <p class="note-meta">Huan-Hsin Tseng · October 2026 · Expository note</p>
+  </header>
+
+  <p>In reading quantum error correction textbooks, lecture notes, and papers, I often find that the mathematical spaces, map domains, and identifications are left implicit. This can make a compelling physical picture harder to reconstruct precisely. I prefer to begin with the topology and its algebra, then ask which additional choices turn them into a quantum code.</p>
+  <p>A face is not its boundary; a chain is not a cochain; a homology class is not a quantum state. Keeping these objects distinct makes the connection to physics more direct. The aim of this note is to derive the familiar surface-code operators from explicit maps, and to see exactly what their measurements can—and cannot—tell us about an error.</p>
+
+  <figure class="fig note-figure">
+    <div class="paper tight"><img class="zoom" src="../assets/img/research/concepts/topology-cycles-v1.webp" width="1536" height="1024" alt="Conceptual cellular torus comparing a loop that bounds a face with an essential loop that does not bound a two-chain."></div>
+    <figcaption>Two kinds of cycle on a cellulated torus. The loop \(z_b=\partial_2f\) bounds a face, whereas the essential loop \(z_\ell\) is closed but is not a boundary. Their distinction is measured by homology: \(H_1(T^2;\mathbb F_2)\cong\mathbb F_2^2\). The notation and quotient construction are developed below. This is a schematic conceptual illustration.</figcaption>
+  </figure>
+
+  <nav class="note-toc" aria-label="Contents">
+    <a href="#spaces">1. Spaces, quotients, and homotopy</a>
+    <a href="#cellular-data">2. Cellular chains and their duals</a>
+    <a href="#homology">3. Homology, exactness, and chain maps</a>
+    <a href="#relative-homology">4. Relative chains and boundary maps</a>
+    <a href="#surface-code">5. The physical problem: which error occurred?</a>
+    <a href="#operator-realization">6. Derive the checks and their commutation</a>
+    <a href="#logical-information">7. Decode a syndrome; preserve a logical class</a>
+    <a href="#planar-example">8. A worked planar surface code</a>
+  </nav>
+
+  <section id="spaces" class="note-section" aria-labelledby="spaces-title">
+    <h2 id="spaces-title">1. Spaces, quotients, and homotopy</h2>
+    <div class="note-formal">
+      <p><b>Definition 1 — Quotient space.</b> Let \(K\) be a topological space and \(\sim\) an equivalence relation. The set \(K/{\sim}\) consists of equivalence classes; the projection \(q:K\to K/{\sim}\), \(u\mapsto[u]\), equips it with the quotient topology:</p>
+      <div class="eq note-diagram">\[
+      U\subseteq K/{\sim}\text{ is open}\iff q^{-1}(U)\subseteq K\text{ is open}.
+      \]</div>
+      <p>For a nonempty subspace \(A\subseteq K\), the notation \(K/A\) means that all points of \(A\) are identified to one point, with every point outside \(A\) remaining distinct.</p>
+    </div>
+    <p>For example, identifying opposite sides of a square produces a torus. This changes the topological space. Later, a quotient such as \(Z_1/B_1\) will instead identify <em>algebraic chains</em> that differ by a boundary. These are different quotient constructions.</p>
+
+    <div class="note-formal">
+      <p><b>Definition 2 — Based homotopy.</b> Fix a basepoint \(k_0\in K\). Based maps \(f,g:(S^n,*)\to(K,k_0)\) are equivalent when a continuous map \(F:S^n\times[0,1]\to K\) satisfies \(F(\cdot,0)=f\), \(F(\cdot,1)=g\), and \(F(*,t)=k_0\). For \(n\geq1\),</p>
+      <div class="eq note-diagram">\[
+      \pi_n(K,k_0):=[(S^n,*),(K,k_0)]_*.
+      \]</div>
+      <p>For \(n=1\), this is the fundamental group: based loops modulo based homotopy, with multiplication given by concatenation. Higher groups \(\pi_n\), \(n\geq2\), are abelian; \(\pi_1\) need not be.</p>
+    </div>
+    <p>Homotopy deforms maps continuously. Homology, defined below, compares additive cycles modulo boundaries. They are related, but they do not impose the same equivalence relation. For path-connected CW complexes, the first connection is</p>
+    <div class="eq note-diagram">\[
+    H_1(K;\mathbb Z)\cong\pi_1(K,k_0)_{\mathrm{ab}},
+    \qquad H_1(K;\mathbb F_2)\cong H_1(K;\mathbb Z)\otimes_{\mathbb Z}\mathbb F_2.
+    \]</div>
+    <p>Here the subscript \(\mathrm{ab}\) denotes quotienting by the commutator subgroup. Thus binary homology retains the additive, parity-valued information relevant to the code considered here; it does not retain the whole fundamental group.</p>
+
+
+  </section>
+
+  <section id="cellular-data" class="note-section" aria-labelledby="cellular-title">
+    <h2 id="cellular-title">2. Cellular chains and their duals</h2>
+    <div class="note-formal">
+      <p><b>Definition 3 — Cellular data.</b> Let \(K\) be a finite oriented regular two-dimensional CW complex and \(R\) a commutative ring with unit. Its skeletons satisfy \(K^{(0)}\subseteq K^{(1)}\subseteq K^{(2)}=K\). The \(0\)-cells are points. For \(k\geq1\), a \(k\)-cell is attached by a map \(a_\sigma:S^{k-1}\to K^{(k-1)}\); regularity requires its characteristic map \(D^k\to\overline\sigma\) to be a homeomorphism. Set</p>
+      <div class="eq note-diagram">\[
+      C_k(K;R):=\bigoplus_{\sigma\in K_k}R\sigma,
+      \qquad C^k(K;R):=\operatorname{Hom}_R(C_k(K;R),R).
+      \]</div>
+      <p>The set \(K_k\) indexes the open \(k\)-cells. A chain is a formal linear combination of cells. A cochain is an \(R\)-linear functional on chains; its cellular dual basis satisfies \(\sigma^\vee(\tau)=\delta_{\sigma\tau}\).</p>
+    </div>
+    <p><b>Notation relative to Hatcher.</b> Throughout this note \(C_n(K;R)\) denotes cellular chains. The chosen cell orientations identify it with Hatcher’s skeletal group \(H_n(K^{(n)},K^{(n-1)};R)\), where \(K^{(-1)}=\varnothing\). Hatcher denotes the cellular differential by \(d_n\); here it is written \(\partial_n\). The cellular homology theorem identifies its homology with singular homology. The symbols are fixed here to keep the chain and cochain domains explicit.</p>
+    <p>Write \(v,e,f\) for vertices, oriented edges, and faces. The cellular boundary maps and their dual coboundaries are</p>
+    <div class="eq note-diagram">\[
+    C_2\xrightarrow{\partial_2}C_1\xrightarrow{\partial_1}C_0,
+    \qquad \partial_1\partial_2=0,
+    \]</div>
+    <div class="eq note-diagram">\[
+    C^0\xrightarrow{\delta^0}C^1\xrightarrow{\delta^1}C^2,
+    \qquad (\delta^k\phi)(c)=\phi(\partial_{k+1}c).
+    \]</div>
+    <p>Here \(\phi\in C^k\), \(c\in C_{k+1}\), and \(\delta^1\delta^0=0\). The notation suppresses \((K;R)\) only within this fixed complex.</p>
+
+    <div class="note-formal">
+      <p><b>Definition 4 — Incidence coefficients.</b> For an oriented face \(f\), let \(a_f:S^1\to K^{(1)}\) be its attaching map. For an open edge \(e\), let \(q_e:K^{(1)}\to K^{(1)}/(K^{(1)}\setminus e)\cong S^1\) collapse its complement. With \(\iota:\mathbb Z\to R\), \(m\mapsto m1_R\), put</p>
+      <div class="eq note-diagram">\[
+      [f:e]:=\iota\bigl(\deg(q_e\circ a_f)\bigr),
+      \qquad \partial_2f=\sum_e[f:e]e.
+      \]</div>
+      <p>An edge oriented from \(s(e)\) to \(t(e)\) has \(\partial_1e=t(e)-s(e)\). Consequently,</p>
+      <div class="eq note-diagram">\[
+      \delta^0v^\vee=\sum_e[e:v]e^\vee,
+      \qquad [e:v]:=v^\vee(\partial_1e).
+      \]</div>
+    </div>
+    <p>The second identity follows by evaluation on each edge. It takes a <em>vertex cochain</em> as input; \(\partial_1\) takes an edge chain as input. A vertex and its dual basis functional cannot be substituted for one another without specifying an identification.</p>
+    <div class="eq note-diagram">\[
+    \langle\cdot,\cdot\rangle:C^1\times C_1\longrightarrow R,
+    \qquad \langle x,z\rangle=x(z).
+    \]</div>
+    <p>This evaluation is canonical. Writing both modules as \(R^n\), or writing \([\delta^0]=[\partial_1]^{\mathsf T}\), uses the chosen cellular bases.</p>
+  </section>
+
+  <section id="homology" class="note-section" aria-labelledby="homology-title">
+    <h2 id="homology-title">3. Homology, exactness, and chain maps</h2>
+    <div class="note-formal">
+      <p><b>Definition 5 — Cycles, boundaries, and homology.</b> For a chain complex \((C_*,\partial_*)\), set</p>
+      <div class="eq note-diagram">\[
+      Z_k:=\ker\partial_k,\qquad B_k:=\operatorname{im}\partial_{k+1},
+      \qquad H_k:=Z_k/B_k.
+      \]</div>
+      <p>The identity \(\partial_k\partial_{k+1}=0\) gives \(B_k\subseteq Z_k\). A class is \([z]=z+B_k\); two cycles represent the same class precisely when \(z'-z=\partial_{k+1}b\) for some \(b\in C_{k+1}\). Dually,</p>
+      <div class="eq note-diagram">\[
+      Z^k:=\ker\delta^k,\qquad B^k:=\operatorname{im}\delta^{k-1},
+      \qquad H^k:=Z^k/B^k.
+      \]</div>
+    </div>
+    <p>A sequence \(M\xrightarrow{a}N\xrightarrow{b}P\) is <em>exact at \(N\)</em> when \(\operatorname{im}a=\ker b\). A chain complex requires only containment. Its homology measures the failure of exactness. The following are genuine short exact sequences:</p>
+    <div class="eq note-diagram">\[
+    0\longrightarrow Z_k\xrightarrow{\;i\;}C_k
+    \xrightarrow{\;\partial_k\;}B_{k-1}\longrightarrow0,
+    \]</div>
+    <div class="eq note-diagram">\[
+    0\longrightarrow B_k\xrightarrow{\;j\;}Z_k
+    \xrightarrow{\;q\;}H_k\longrightarrow0.
+    \]</div>
+    <p>Here \(i,j\) are inclusions, \(q(z)=z+B_k\), and \(\partial_k\) in the first sequence is corestricted to its image. The cellular complex itself is generally not exact.</p>
+
+    <div class="note-formal">
+      <p><b>Definition 6 — Chain map.</b> A family of \(R\)-linear maps \(F_k:C_k(K;R)\to C_k(L;R)\) is a chain map when \(\partial_k^L F_k=F_{k-1}\partial_k^K\). Thus both squares commute:</p>
+      <div class="eq note-diagram">\[
+      \begin{array}{ccccc}
+      C_2(K;R)&\xrightarrow{\partial_2^K}&C_1(K;R)&\xrightarrow{\partial_1^K}&C_0(K;R)\\[2pt]
+      {\scriptstyle F_2}\downarrow&&{\scriptstyle F_1}\downarrow&&{\scriptstyle F_0}\downarrow\\[2pt]
+      C_2(L;R)&\xrightarrow{\partial_2^L}&C_1(L;R)&\xrightarrow{\partial_1^L}&C_0(L;R)
+      \end{array}
+      \]</div>
+      <p>It induces \(H_k(F_*):H_k(K;R)\to H_k(L;R)\), \([z]\mapsto[F_kz]\): cycles map to cycles and boundaries to boundaries.</p>
+    </div>
+    <p>For a continuous cellular map \(f:K\to L\), write \(f_\sharp\) for its induced cellular chain map and \(f_*\) for the induced homology map, following the distinction between chain and homology maps in Hatcher. This describes compatibility with topology; implementing a physical operation on a quantum device requires additional data.</p>
+  </section>
+
+  <section id="relative-homology" class="note-section" aria-labelledby="relative-title">
+    <h2 id="relative-title">4. Relative chains and two different boundary maps</h2>
+    <div class="note-formal">
+      <p><b>Definition 7 — Relative complex.</b> Let \(A\subseteq K\) be a subcomplex. Since \(\partial_kC_k(A;R)\subseteq C_{k-1}(A;R)\), the quotient modules carry an induced differential:</p>
+      <div class="eq note-diagram">\[
+      C_k(K,A;R):=C_k(K;R)/C_k(A;R),
+      \]</div>
+      <div class="eq note-diagram">\[
+      \partial_k^{\mathrm{rel}}:C_k(K,A;R)\longrightarrow C_{k-1}(K,A;R),
+      \qquad \overline c\longmapsto\overline{\partial_kc}.
+      \]</div>
+      <p>Here \(\overline c=c+C_k(A;R)\). Replacing \(c\) by \(c+a\), \(a\in C_k(A;R)\), changes \(\partial_kc\) by \(\partial_ka\in C_{k-1}(A;R)\); hence the formula is well-defined. Also \((\partial^{\mathrm{rel}})^2=0\).</p>
+      <div class="eq note-diagram">\[
+      H_k(K,A;R):=\ker\partial_k^{\mathrm{rel}}/\operatorname{im}\partial_{k+1}^{\mathrm{rel}}.
+      \]</div>
+      <p>The relative cochains are the dual of this quotient, equivalently the ordinary cochains that vanish on chains in \(A\):</p>
+      <div class="eq note-diagram">\[
+      C^k(K,A;R):=\operatorname{Hom}_R(C_k(K,A;R),R)
+      \cong\{\phi\in C^k(K;R):\phi|_{C_k(A;R)}=0\}.
+      \]</div>
+    </div>
+    <p>A relative cycle need not be closed as an ordinary chain: its boundary need only lie in \(A\). For example, a path with both endpoints in \(A\) has zero relative boundary. For a nonempty CW subcomplex, \(H_k(K,A;R)\cong\widetilde H_k(K/A;R)\); the tilde denotes reduced homology. This relates the topological quotient to the algebraic construction without identifying them.</p>
+
+    <figure class="fig note-figure">
+      <div class="paper tight"><img class="zoom" src="../assets/img/research/topological-spaces-relative-homology.svg" width="1400" height="1000" alt="Topological spaces and their algebraic descriptions: a cellulated surface, a quotient space, cycles modulo boundaries, and a relative chain whose endpoints lie in the selected subcomplex."></div>
+      <figcaption>An annulus \(K\) with \(A=\partial K\), comprising both boundary circles. A bridging chain \(c\) has ordinary boundary \(b-a\in C_0(A;R)\), so it is a relative cycle; \(\partial\) retains the endpoint class in \(H_0(A;R)\). The quotient \(K/A\) identifies all of \(A\) to one point. This illustrates the relative construction; the planar code below instead selects two rough boundary arcs of a disk.</figcaption>
+    </figure>
+
+    <p>The inclusions \(i\) and quotient projections \(j\) form a degreewise short exact sequence of chain complexes:</p>
+    <div class="eq note-diagram">\[
+    0\longrightarrow C_*(A;R)\xrightarrow{\;i\;}C_*(K;R)
+    \xrightarrow{\;j\;}C_*(K,A;R)\longrightarrow0.
+    \]</div>
+    <p>It produces the long exact sequence of the pair; coefficient \(R\) is suppressed here:</p>
+    <div class="eq note-diagram">\[
+    \cdots\longrightarrow H_k(A)\xrightarrow{i_*}H_k(K)
+    \xrightarrow{j_*}H_k(K,A)\xrightarrow{\partial}H_{k-1}(A)
+    \xrightarrow{i_*}H_{k-1}(K)\longrightarrow\cdots.
+    \]</div>
+    <div class="note-formal">
+      <p><b>Proposition 1 — Connecting homomorphism.</b> The map</p>
+      <div class="eq note-diagram">\[
+      \partial:H_k(K,A;R)\longrightarrow H_{k-1}(A;R),
+      \qquad [\overline c]\longmapsto[\partial_kc]_A
+      \]</div>
+      <p>is defined by lifting a relative cycle to \(c\in C_k(K;R)\), taking its ordinary boundary, and viewing that boundary in \(A\).</p>
+      <p><i>Verification.</i> The relative-cycle condition places \(\partial_kc\) in \(C_{k-1}(A;R)\), and \(\partial^2=0\) makes it a cycle there. Any equivalent representative has a lift \(c'=c+a+\partial_{k+1}b\), with \(a\in C_k(A;R)\). Then \(\partial_kc'-\partial_kc=\partial_ka\), a boundary in \(A\). Thus the class is independent of both choices. \(\square\)</p>
+    </div>
+    <p>Following Hatcher, the symbol \(\partial\) also denotes the connecting homomorphism. The relative differential \(\partial_k^{\mathrm{rel}}\) acts on relative <em>chains</em>; the connecting map \(\partial\) acts on relative <em>homology classes</em> and lands in the homology of \(A\). Its domain and codomain distinguish it from the chain differential. Neither is a homotopy-group boundary map. Relative homotopy is a separate construction using homotopy classes of maps of based pairs; it is not the quotient defining \(H_k(K,A;R)\). These distinctions will specify which error endpoints a boundary is allowed to absorb.</p>
+  </section>
+
+  <section id="surface-code" class="note-section" aria-labelledby="surface-title">
+    <h2 id="surface-title">5. The physical problem: which error occurred?</h2>
+    <p>Suppose a quantum state is encoded in many physical qubits. Noise changes individual qubits, while measurements must reveal enough information to correct the error without measuring the encoded state. A surface code addresses this with local commuting checks. The mathematical question is: which parts of an error are visible to those checks, and which undetectable changes remain physically distinct?</p>
+    <p>Choose a cellulated surface and work over \(\mathbb F_2\). For a closed surface use \(D_*=C_*(K;\mathbb F_2)\). For a patch with a selected rough boundary subcomplex \(A\), use \(D_*=C_*(K,A;\mathbb F_2)\). Write \(d_k:D_k\to D_{k-1}\) for the corresponding differential and \(d^k:D^k\to D^{k+1}\) for its dual. In the relative case, the cellular basis consists of cells not contained in \(A\).</p>
+    <div class="eq note-diagram">\[
+    D^k:=\operatorname{Hom}_{\mathbb F_2}(D_k,\mathbb F_2),
+    \qquad (d^kx)(c):=x(d_{k+1}c),
+    \quad x\in D^k,\ c\in D_{k+1}.
+    \]</div>
+    <div class="note-table-wrap">
+      <table class="note-table">
+        <caption>The mathematical data and their physical roles</caption>
+        <thead><tr><th scope="col">Mathematical object</th><th scope="col">Physical interpretation</th></tr></thead>
+        <tbody>
+          <tr><td>Basis edge of \(D_1\)</td><td>One data qubit</td></tr>
+          <tr><td>\(z\in D_1\), \(x\in D^1\)</td><td>Supports of \(Z\)- and \(X\)-type Pauli errors</td></tr>
+          <tr><td>\(d_2f\in D_1\)</td><td>Label of a \(Z\)-plaquette check</td></tr>
+          <tr><td>\(d^0v^\vee\in D^1\)</td><td>Label of an \(X\)-star check</td></tr>
+          <tr><td>\(d_1z\in D_0\), \(d^1x\in D^2\)</td><td>Measured error syndromes</td></tr>
+          <tr><td>\(H_1(D_*)\), \(H^1(D_*)\)</td><td>Undetectable pure-type errors modulo stabilizers</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figure class="fig note-figure">
+      <div class="paper tight"><img class="zoom" src="../assets/img/research/topological-code-chain-complex.svg" width="1400" height="1080" alt="Local surface-code supports derived from a face boundary and a vertex coboundary, with edge qubits, incidence coefficients, and their evaluation pairing."></div>
+      <figcaption><b>Local supports and the maps that generate them.</b> The face \(f\in C_2\) yields \(z=\partial_2f\in C_1\); the vertex functional \(v^\vee\in C^0\) yields \(x=\delta^0v^\vee\in C^1\). Their common edges contribute to the evaluation \(x(z)\). At an incident corner there are two such edges, so the binary pairing is zero. The figure shows an interior patch; global logical classes depend on the complete surface and its boundary conditions.</figcaption>
+    </figure>
+    <p>The picture describes labels and incidences. The next step supplies a Hilbert space and an operator realization; only then do the chains become quantum operations.</p>
+  </section>
+
+  <section id="operator-realization" class="note-section" aria-labelledby="operator-title">
+    <h2 id="operator-title">6. Derive the checks and their commutation</h2>
+    <p>Return briefly to the general \(R\)-valued cellular complex. Choose homomorphisms of additive groups</p>
+    <div class="eq note-diagram">\[
+    \rho:(C_1,+)\longrightarrow\operatorname{GL}(\mathcal H),
+    \qquad \Pi:(C^1,+)\longrightarrow\operatorname{GL}(\mathcal H).
+    \]</div>
+    <p>These are not \(R\)-linear maps into \(\operatorname{GL}(\mathcal H)\). Define \(W_e(r)=\rho(re)\) and \(U_e(r)=\Pi(re^\vee)\). The cellular maps give the compositions</p>
+    <div class="eq note-diagram">\[
+    C_2\xrightarrow{\partial_2}C_1\xrightarrow{\rho}\operatorname{GL}(\mathcal H),
+    \]</div>
+    <div class="eq note-diagram">\[
+    C^0\xrightarrow{\delta^0}C^1\xrightarrow{\Pi}\operatorname{GL}(\mathcal H).
+    \]</div>
+    <div class="note-formal">
+      <p><b>Proposition 2 — Incidence determines the products.</b> Applying the homomorphisms to the incidence expansions gives</p>
+      <div class="eq note-diagram">\[
+      B_f:=\rho(\partial_2f)=\prod_e W_e([f:e]),
+      \qquad A_v:=\Pi(\delta^0v^\vee)=\prod_e U_e([e:v]).
+      \]</div>
+      <p>Factors commute within each family because its source group is abelian. A negative incidence yields an inverse, for example \(W_e(-r)=W_e(r)^{-1}\).</p>
+    </div>
+    <p>Thus the products follow from boundaries and coboundaries. Locality requires each \(W_e,U_e\) to act only on the Hilbert-space factor assigned to \(e\). A nonzero coefficient produces nontrivial support only when its label acts nontrivially. These group homomorphisms alone impose neither unitarity nor cross-commutation.</p>
+
+    <p>For the qubit code, use the binary complex \(D_*\) above, with \(n=\dim D_1\), and choose</p>
+    <div class="eq note-diagram">\[
+    \mathcal H=(\mathbb C^2)^{\otimes n},
+    \qquad \rho(z)=\bigotimes_e Z^{z_e},
+    \qquad \Pi(x)=\bigotimes_e X^{x_e}.
+    \]</div>
+    <p>The Pauli matrices supply the compatibility relation</p>
+    <div class="eq note-diagram">\[
+    \Pi(x)\rho(z)=(-1)^{\langle x,z\rangle}\rho(z)\Pi(x),
+    \qquad \langle x,z\rangle=x(z)\in\mathbb F_2.
+    \]</div>
+    <div class="note-formal" id="commutation">
+      <p><b>Proposition 3 — Commutation from a typed composition.</b> Let \(B_f=\rho(d_2f)\) and \(A_v=\Pi(d^0v^\vee)\). Then</p>
+      <div class="eq note-diagram">\[
+      \langle d^0v^\vee,d_2f\rangle
+      =v^\vee(d_1d_2f)=0
+      \quad\Longrightarrow\quad A_vB_f=B_fA_v.
+      \]</div>
+      <p>Both checks are Hermitian involutions. The code space \(\mathcal C\subseteq\mathcal H\) is their simultaneous \(+1\) eigenspace.</p>
+    </div>
+    <p>The topology supplies \(d_1d_2=0\); the Pauli realization converts its evaluation into a commutation phase. For prime-dimensional qudits, replace qubits by \(\mathbb C^p\) and use compatible Weyl operators over \(\mathbb F_p\). A general coefficient ring requires additional representation data.</p>
+  </section>
+
+  <section id="logical-information" class="note-section" aria-labelledby="logical-title">
+    <h2 id="logical-title">7. Decode a syndrome; preserve a logical class</h2>
+    <p>A \(Z\)-error \(\rho(z)\), \(z\in D_1\), changes the star eigenvalues according to</p>
+    <div class="eq note-diagram">\[
+    A_v\rho(z)=(-1)^{v^\vee(d_1z)}\rho(z)A_v.
+    \]</div>
+    <p>Thus \(s_Z=d_1z\in D_0\) is the syndrome: for an interior error path, its endpoints are detected. Similarly an \(X\)-error \(\Pi(x)\), \(x\in D^1\), has syndrome \(s_X=d^1x\in D^2\). A cycle or cocycle has no syndrome. A boundary or coboundary is a product of stabilizers and acts trivially on the code. Therefore</p>
+    <div class="eq note-diagram">\[
+    \mathcal L_Z\cong H_1(D_*)=\frac{\ker d_1}{\operatorname{im}d_2},
+    \qquad \mathcal L_X\cong H^1(D_*)=\frac{\ker d^1}{\operatorname{im}d^0}.
+    \]</div>
+    <p>Here \(\mathcal L_Z,\mathcal L_X\) are pure-type logical Pauli classes modulo stabilizers and global phases. Evaluation descends to \(H^1(D_*)\times H_1(D_*)\to\mathbb F_2\): a cocycle vanishes on boundaries, and a coboundary vanishes on cycles. A pair with evaluation \(1\) gives anticommuting logical \(X\) and \(Z\) operators. In cellular coordinates,</p>
+    <div class="eq note-diagram">\[
+    H_X=[d_1],\qquad H_Z=[d_2]^{\mathsf T},
+    \qquad H_XH_Z^{\mathsf T}=0.
+    \]</div>
+    <p>The encoded-qubit count is \(k=n-\operatorname{rank}H_X-\operatorname{rank}H_Z=\dim_{\mathbb F_2}H_1(D_*)\). For a closed torus it is two. The transpose notation records the chosen dual bases, not an equality of chains and cochains.</p>
+
+    <p>Given a measured syndrome \(s_Z\), a decoder chooses \(\widehat z\in D_1\) with \(d_1\widehat z=s_Z\). The residual error is a cycle:</p>
+    <div class="eq note-diagram">\[
+    r=z+\widehat z\in\ker d_1,
+    \qquad \text{successful correction}\iff[r]=0\text{ in }H_1(D_*).
+    \]</div>
+    <p>Equal syndromes do not determine equal logical classes. A learned decoder may improve how \(\widehat z\) is chosen; the complex and its quotient determine what counts as success.</p>
+
+    <p>The same syndrome can leave different logical classes. The following finite planar example makes every map and boundary convention explicit.</p>
+  </section>
+
+  <section id="planar-example" class="note-section" aria-labelledby="planar-title">
+    <h2 id="planar-title">8. A worked planar patch: boundaries, matrices, and recovery</h2>
+    <p>Take a square disk \(K=[0,2]\times[0,2]\), divided into four unit-square faces. Let \(A=A_L\sqcup A_R\) be the union of its left and right sides, including their vertices and edges. These are the <em>rough</em> boundary arcs. The complementary top and bottom boundary arcs are <em>smooth</em>; their corner points belong to \(A\). We use the convention that \(Z\)-error paths may end on rough boundaries; dual-lattice \(X\)-error paths may end on smooth boundaries.</p>
+
+    <figure class="fig note-figure planar-figure">
+      <div class="paper tight"><picture>
+        <source media="(max-width: 700px)" srcset="../assets/img/research/planar-surface-code-worked-mobile.svg" width="548" height="2220">
+        <img class="zoom" src="../assets/img/research/planar-surface-code-worked.svg" width="1600" height="870" alt="A four-face planar surface-code patch with left and right rough boundaries, top and bottom smooth boundaries, eight edge qubits, an error and recovery sharing one syndrome, and intersecting relative logical Z and dual logical X paths.">
+      </picture></div>
+      <figcaption><b>One patch, two quotients, and one encoded qubit.</b> Geometric labels name cells of \(K\); bars denote their classes in the relative chain groups. The error \(z=\bar h_{1L}\) and proposed recovery \(\widehat z=\bar h_{1R}\) both have syndrome \(\bar v_1\). Their sum \(\ell_Z=z+\widehat z\) joins the rough arcs and represents a nonzero class in \(H_1(K,A;\mathbb F_2)\). The dashed dual path depicts a cocycle \(x\), with \(x(\ell_Z)=1\); it is an element of the dual cochain group, rather than another primal edge chain.</figcaption>
+    </figure>
+
+    <h3>8.1 Fix the pair and the cellular bases</h3>
+    <p>All coefficients below lie in \(\mathbb F_2\). Set \(C_n=C_n(K,A;\mathbb F_2)\), and write \(\partial_n:C_n\to C_{n-1}\) for the induced relative differential. Thus \(\bar e=e+C_1(A;\mathbb F_2)\) is a relative chain, while \([\bar e]\) is a homology class only when \(\bar e\) is a relative cycle. These are successive quotient operations.</p>
+    <p>Index rows from top to bottom by \(i=0,1,2\). The horizontal edges \(h_{iL}\), \(h_{iR}\) join the left, middle, and right columns; the middle-column vertical edges are \(m_0,m_1\). The surviving vertices are \(v_0,v_1,v_2\). The face \(f_{iL}\), respectively \(f_{iR}\), lies between rows \(i,i+1\) on the left, respectively right, for \(i=0,1\). Use the ordered bases</p>
+    <div class="eq note-diagram">\[
+    \mathcal B_2=(\bar f_{0L},\bar f_{0R},\bar f_{1L},\bar f_{1R}),
+    \]</div>
+    <div class="eq note-diagram">\[
+    \mathcal B_1=(\bar h_{0L},\bar h_{0R},\bar h_{1L},\bar h_{1R},\bar h_{2L},\bar h_{2R},\bar m_0,\bar m_1),
+    \]</div>
+    <div class="eq note-diagram">\[
+    \mathcal B_0=(\bar v_0,\bar v_1,\bar v_2),
+    \qquad C_2\cong\mathbb F_2^4,\quad C_1\cong\mathbb F_2^8,\quad C_0\cong\mathbb F_2^3.
+    \]</div>
+    <p>The four vertical boundary edges and their six vertices belong to \(A\), so their relative classes vanish. There are eight data qubits, one for each edge in \(\mathcal B_1\).</p>
+
+    <h3>8.2 Compute the boundary maps, then the checks</h3>
+    <p>The relative boundary of a horizontal edge retains only its middle-column endpoint. The boundary of a face loses the edge contained in \(A\). Explicitly,</p>
+    <div class="eq note-diagram">\[
+    \partial_1\bar h_{iL}=\partial_1\bar h_{iR}=\bar v_i,
+    \qquad \partial_1\bar m_i=\bar v_i+\bar v_{i+1},
+    \]</div>
+    <div class="eq note-diagram">\[
+    \partial_2\bar f_{iL}=\bar h_{iL}+\bar h_{i+1,L}+\bar m_i,
+    \qquad
+    \partial_2\bar f_{iR}=\bar h_{iR}+\bar h_{i+1,R}+\bar m_i.
+    \]</div>
+    <p>The first formula for horizontal edges holds for \(i=0,1,2\); the formulas involving \(m_i\) or \(f_{iL/R}\) hold for \(i=0,1\). With coordinate columns in the stated bases, the complete matrices are</p>
+    <div class="eq note-diagram">\[
+    [\partial_1]_{\mathcal B_0\leftarrow\mathcal B_1}
+    =\begin{pmatrix}
+    1&1&0&0&0&0&1&0\\
+    0&0&1&1&0&0&1&1\\
+    0&0&0&0&1&1&0&1
+    \end{pmatrix},
+    \]</div>
+    <div class="eq note-diagram">\[
+    [\partial_2]_{\mathcal B_1\leftarrow\mathcal B_2}
+    =\begin{pmatrix}
+    1&0&0&0\\
+    0&1&0&0\\
+    1&0&1&0\\
+    0&1&0&1\\
+    0&0&1&0\\
+    0&0&0&1\\
+    1&1&0&0\\
+    0&0&1&1
+    \end{pmatrix}.
+    \]</div>
+    <p>Every column of \([\partial_2]\) has zero image under \([\partial_1]\):</p>
+    <div class="eq note-diagram">\[
+    [\partial_1][\partial_2]=0_{3\times4},
+    \quad \operatorname{rank}[\partial_1]=3,
+    \quad \operatorname{rank}[\partial_2]=4.
+    \]</div>
+    <p>Consequently \(\dim\ker\partial_1=5\), \(\dim\operatorname{im}\partial_2=4\), and \(\dim H_1(K,A;\mathbb F_2)=1\). The matrices give three independent \(X\)-checks and four independent \(Z\)-checks on eight qubits. For example, with \(X_e,Z_e\) denoting the Pauli matrices on the qubit labelled by \(e\),</p>
+    <div class="eq note-diagram">\[
+    A_{v_1}=\Pi(\delta^0\bar v_1^\vee)
+    =X_{h_{1L}}X_{h_{1R}}X_{m_0}X_{m_1},
+    \]</div>
+    <div class="eq note-diagram">\[
+    B_{f_{0L}}=\rho(\partial_2\bar f_{0L})
+    =Z_{h_{0L}}Z_{h_{1L}}Z_{m_0}.
+    \]</div>
+    <p>Thus the boundary check has three factors because its fourth edge vanishes in the relative quotient. Its support follows from the map, with no separate boundary rule added to the operator product.</p>
+
+    <h3>8.3 The same syndrome can conceal a logical error</h3>
+    <p>Suppose \(z=\bar h_{1L}\) is the actual \(Z\)-error support. A decoder might instead propose \(\widehat z=\bar h_{1R}\). The star measurements cannot distinguish them:</p>
+    <div class="eq note-diagram">\[
+    s_Z=\partial_1z=\partial_1\widehat z=\bar v_1,
+    \qquad [s_Z]_{\mathcal B_0}=\begin{pmatrix}0\\1\\0\end{pmatrix}.
+    \]</div>
+    <p>Applying the proposed recovery leaves the relative cycle</p>
+    <div class="eq note-diagram">\[
+    \ell_Z=z+\widehat z=\bar h_{1L}+\bar h_{1R},
+    \qquad \partial_1\ell_Z=0.
+    \]</div>
+    <p>Its ordinary lift has one endpoint on each component of \(A\). Since \(K\) is contractible and \(A\) has two contractible components, the pair sequence reduces to</p>
+    <div class="eq note-diagram">\[
+    0\longrightarrow H_1(K,A;\mathbb F_2)
+    \xrightarrow{\ \partial\ }H_0(A;\mathbb F_2)
+    \xrightarrow{i_*}H_0(K;\mathbb F_2)\longrightarrow0.
+    \]</div>
+    <p>Here \(H_0(A;\mathbb F_2)\cong\mathbb F_2^2\), \(i_*(a,b)=a+b\), and the connecting homomorphism sends</p>
+    <div class="eq note-diagram">\[
+    \partial[\ell_Z]=[a_L]+[a_R]\ne0,
+    \qquad a_L\in A_L,\quad a_R\in A_R.
+    \]</div>
+    <p>The endpoint classes belong to \(H_0(A;\mathbb F_2)\). Exactness proves \([\ell_Z]\ne0\): the residual error has zero syndrome but changes the encoded qubit. In this equation \(\partial\) acts on homology classes; \(\partial_1\ell_Z=0\) above is a statement about the relative chain differential. The domains make the distinction explicit.</p>
+
+    <p>A successful recovery for the same actual error is \(\widehat z_{\mathrm{good}}=\bar h_{0L}+\bar m_0\). It has the measured syndrome, and its residual is a relative boundary:</p>
+    <div class="eq note-diagram">\[
+    \partial_1\widehat z_{\mathrm{good}}=\bar v_1,
+    \qquad z+\widehat z_{\mathrm{good}}=\partial_2\bar f_{0L}.
+    \]</div>
+    <p>Thus \(\rho(z+\widehat z_{\mathrm{good}})=B_{f_{0L}}\) acts as the identity on the code space. Recovery need not retrace the actual error; its residual must lie in \(\operatorname{im}\partial_2\). The proposed one-edge recovery \(\widehat z=\bar h_{1R}\) instead leaves the nonzero logical class proved above.</p>
+
+    <h3>8.4 Boundary deformations and the conjugate logical operator</h3>
+    <p>A top-edge path \(\ell'_Z=\bar h_{0L}+\bar h_{0R}\) is another representative of the same logical class, because</p>
+    <div class="eq note-diagram">\[
+    \ell'_Z+\ell_Z=\partial_2(\bar f_{0L}+\bar f_{0R}),
+    \qquad [\ell'_Z]=[\ell_Z]\in H_1(K,A;\mathbb F_2).
+    \]</div>
+    <p>Physically, \(\rho(\ell'_Z)\rho(\ell_Z)=B_{f_{0L}}B_{f_{0R}}\). Multiplying by those two plaquette checks moves the path without changing its action on the code. This is the second quotient: relative cycles modulo relative boundaries.</p>
+    <p>For the conjugate logical operator take the cochain</p>
+    <div class="eq note-diagram">\[
+    x=\bar h_{0L}^{\vee}+\bar h_{1L}^{\vee}+\bar h_{2L}^{\vee}
+    \in C^1(K,A;\mathbb F_2).
+    \]</div>
+    <p>Each left face boundary crosses its support twice; each right face boundary crosses it zero times. Hence \(\delta^1x=x\circ\partial_2=0\), while</p>
+    <div class="eq note-diagram">\[
+    x(\ell_Z)=1,
+    \qquad \overline X:=\Pi(x),\quad \overline Z:=\rho(\ell_Z),
+    \qquad \overline X\,\overline Z=-\overline Z\,\overline X.
+    \]</div>
+    <p>The nonzero evaluation proves both \([x]\ne0\) in \(H^1(K,A;\mathbb F_2)\) and \([\ell_Z]\ne0\) in relative homology. The dual-lattice picture of \(x\) joins the smooth top and bottom boundaries, crossing each left horizontal edge once. It depicts the support of a functional; the algebraic object is the cocycle above. The primal rough-boundary path and the dual smooth-boundary path meet once, exactly accounting for the logical Pauli anticommutation.</p>
+    <p>This deliberately small patch encodes one qubit, with minimum nontrivial support weights \(d_Z=2\) and \(d_X=3\), hence code distance \(d=2\). The equal-weight one-edge errors \(\bar h_{1L}\) and \(\bar h_{1R}\) have the same syndrome and differ by a logical operator; this patch therefore cannot correct every single-qubit error. The example makes the role of the pair, the boundary matrices, and the evaluation pairing explicit in both successful recovery and logical failure.</p>
+  </section>
+
+  <section class="note-section note-references" aria-labelledby="references-title">
+    <h2 id="references-title">References and scope</h2>
+    <p>Adapted from my working notes on CSS notation and generalized plaquette/star operators. The constructions are established; this exposition emphasizes their domains, quotient maps, and physical realization. The <a href="topological-qec-diagrams.tex" download>LaTeX source for the chain and operator diagrams</a> is also available.</p>
+    <ol>
+      <li>Allen Hatcher, <a href="https://pi.math.cornell.edu/~hatcher/AT/ATpage.html"><em>Algebraic Topology</em></a>, Chapters 0–3 and §4.1: quotient spaces, homotopy, cellular and relative homology, and dual constructions. See <a href="https://pi.math.cornell.edu/~hatcher/AT/ATch2.pdf">Chapter 2</a>, pp. 115–118 for relative chains and the connecting homomorphism, and Theorem 2.35 (p. 139) for cellular homology.</li>
+      <li>A. Yu. Kitaev, <a href="https://arxiv.org/abs/quant-ph/9707021"><em>Fault-tolerant quantum computation by anyons</em></a>, Annals of Physics 303 (2003): the toric-code realization.</li>
+      <li>E. Dennis, A. Kitaev, A. Landahl, and J. Preskill, <a href="https://arxiv.org/abs/quant-ph/0110143"><em>Topological quantum memory</em></a>, Journal of Mathematical Physics 43 (2002): error chains, syndromes, and homological decoding.</li>
+      <li>N. Delfosse, P. Iyer, and D. Poulin, <a href="https://arxiv.org/abs/1606.07116"><em>Generalized surface codes and packing of logical qubits</em></a> (2016): relative homology and mixed surface boundaries.</li>
+    </ol>
+  </section>
+  <p class="note-back"><a href="../index.html#notes">← Back to research notes</a></p>
+</article>
+</main>
+<footer class="note-footer">© 2026 Huan-Hsin Tseng</footer>
+<div class="lightbox" hidden role="dialog" aria-modal="true" aria-label="Enlarged figure">
+  <button type="button" aria-label="Close figure">×</button>
+  <figure><img src="" alt=""><figcaption><p></p><a class="lightbox-original" href="#" target="_blank" rel="noopener">Open original figure ↗</a></figcaption></figure>
+</div>
+</body>
+</html>

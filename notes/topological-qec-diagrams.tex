@@ -1,0 +1,413 @@
+% Diagram and definition companion to ``Error corrections in view of
+% algebraic topology''. Include in a document loading amsmath and amssymb.
+% This is a fragment, not a standalone document; no TikZ is required.
+
+\section*{Spaces, cellular algebra, and surface-code operators}
+
+\subsection*{Quotient spaces and homotopy}
+
+For a topological space $K$ and an equivalence relation $\sim$, the
+projection $q:K\to K/{\sim}$ sends a point to its equivalence class.
+The quotient topology is characterized by
+\[
+ U\subseteq K/{\sim}\text{ open}
+ \quad\Longleftrightarrow\quad q^{-1}(U)\subseteq K\text{ open}.
+\]
+For a nonempty subspace $A\subseteq K$, the space $K/A$ identifies all
+points of $A$ to one point. This topological quotient is different from
+the quotient of chain modules introduced below.
+
+For a based space $(K,k_0)$ and $n\geq1$, put
+\[
+ \pi_n(K,k_0):=[(S^n,*),(K,k_0)]_*.
+\]
+The brackets mean based maps modulo based homotopy: a homotopy
+$F:S^n\times[0,1]\to K$ keeps $F(*,t)=k_0$ for every $t$.
+For $n=1$, multiplication is loop concatenation. For path-connected
+CW complexes,
+\[
+ H_1(K;\mathbb Z)\cong\pi_1(K,k_0)_{\mathrm{ab}},
+ \qquad
+ H_1(K;\mathbb F_2)\cong H_1(K;\mathbb Z)\otimes\mathbb F_2.
+\]
+Here abelianization is quotient by the commutator subgroup. Homotopy
+classes of maps and homology classes of chains are distinct constructions.
+
+\subsection*{Cellular modules and incidence maps}
+
+Let $K$ be a finite oriented regular two-dimensional CW complex,
+and let $R$ be a commutative ring with unit. Put
+\[
+ C_k:=C_k(K;R)=\bigoplus_{\sigma\in K_k}R\sigma,
+ \qquad C^k:=\operatorname{Hom}_R(C_k,R).
+\]
+The set $K_k$ indexes the open $k$-cells. The dual basis satisfies
+$\sigma^\vee(\tau)=\delta_{\sigma\tau}$; evaluation is the canonical pairing
+$C^k\times C_k\to R$. Coordinate identifications require chosen bases.
+Throughout this fragment $C_n(K;R)$ denotes cellular, rather than
+singular, chains. The chosen cell orientations give an identification
+\[
+ C_n(K;R)\cong H_n(K^{(n)},K^{(n-1)};R),
+ \qquad K^{(-1)}=\varnothing.
+\]
+Hatcher denotes this cellular differential by $d_n$; here it is
+written $\partial_n$. The cellular homology theorem identifies the
+homology of this complex with singular homology.
+The chain complex and its dual are
+\[
+ C_2\xrightarrow{\partial_2}C_1\xrightarrow{\partial_1}C_0,
+ \qquad
+ C^0\xrightarrow{\delta^0}C^1\xrightarrow{\delta^1}C^2,
+\]
+where $\partial_1\partial_2=0$ and
+$(\delta^k\phi)(c)=\phi(\partial_{k+1}c)$.
+Thus $\delta^1\delta^0=0$.
+
+For a face $f$, let $a_f:S^1\to K^{(1)}$ be its attaching map.
+For an open edge $e$, let
+$q_e:K^{(1)}\to K^{(1)}/(K^{(1)}\setminus e)\cong S^1$.
+Using $\iota:\mathbb Z\to R$, $m\mapsto m1_R$, define
+\[
+ [f:e]:=\iota(\deg(q_e\circ a_f)),
+ \qquad \partial_2f=\sum_e[f:e]e.
+\]
+If $e$ is oriented from $s(e)$ to $t(e)$, then
+\[
+ \partial_1e=t(e)-s(e),\qquad [e:v]:=v^\vee(\partial_1e),
+ \qquad \delta^0v^\vee=\sum_e[e:v]e^\vee.
+\]
+The last formula takes a vertex \emph{cochain} as input.
+
+\subsection*{Homology and exact sequences}
+
+Define cycles, boundaries, and their quotient by
+\[
+ Z_k:=\ker\partial_k,\qquad B_k:=\operatorname{im}\partial_{k+1},
+ \qquad H_k:=Z_k/B_k.
+\]
+Thus $z,z'\in Z_k$ have the same class exactly when
+$z'-z=\partial_{k+1}b$ for some $b\in C_{k+1}$.
+A complex requires $B_k\subseteq Z_k$; exactness at $C_k$ requires equality.
+There are genuine short exact sequences
+\[
+ 0\longrightarrow Z_k\xrightarrow{\ i\ }C_k
+ \xrightarrow{\ \partial_k\ }B_{k-1}\longrightarrow0,
+\]
+\[
+ 0\longrightarrow B_k\xrightarrow{\ j\ }Z_k
+ \xrightarrow{\ q\ }H_k\longrightarrow0.
+\]
+Here $i,j$ are inclusions, $q(z)=z+B_k$, and the first boundary map is
+corestricted to its image. Dually,
+\[
+ H^k:=\ker\delta^k/\operatorname{im}\delta^{k-1}.
+\]
+
+A chain map $F_*$ from the cellular complex of $K$ to that of $L$
+satisfies $\partial_k^L F_k=F_{k-1}\partial_k^K$:
+\[
+\begin{array}{ccccc}
+ C_2(K;R)&\xrightarrow{\partial_2^K}&C_1(K;R)
+ &\xrightarrow{\partial_1^K}&C_0(K;R)\\[3pt]
+ {\scriptstyle F_2}\downarrow&&{\scriptstyle F_1}\downarrow
+ &&{\scriptstyle F_0}\downarrow\\[3pt]
+ C_2(L;R)&\xrightarrow{\partial_2^L}&C_1(L;R)
+ &\xrightarrow{\partial_1^L}&C_0(L;R).
+\end{array}
+\]
+It induces $H_k(F_*):H_k(K;R)\to H_k(L;R)$,
+$[z]\mapsto[F_kz]$.
+For a continuous cellular map $f:K\to L$, the induced cellular chain
+map is denoted $f_\sharp$, while its induced homology map is $f_*$.
+
+\subsection*{Relative chains and the connecting homomorphism}
+
+Let $A\subseteq K$ be a CW subcomplex. Its chains form a subcomplex,
+so the quotient carries a well-defined differential:
+\[
+ C_k(K,A;R):=C_k(K;R)/C_k(A;R),
+\]
+\[
+ \partial_k^{\mathrm{rel}}:C_k(K,A;R)\longrightarrow C_{k-1}(K,A;R),
+ \qquad \overline c\longmapsto\overline{\partial_kc}.
+\]
+Here $\overline c=c+C_k(A;R)$. A relative cycle satisfies
+$\partial_kc\in C_{k-1}(A;R)$, rather than necessarily $\partial_kc=0$.
+The relative homology and cochain modules are
+\[
+ H_k(K,A;R):=\ker\partial_k^{\mathrm{rel}}
+ /\operatorname{im}\partial_{k+1}^{\mathrm{rel}},
+\]
+\[
+ C^k(K,A;R):=\operatorname{Hom}_R(C_k(K,A;R),R)
+ \cong\{\phi\in C^k:\phi|_{C_k(A;R)}=0\}.
+\]
+For a nonempty CW subcomplex,
+$H_k(K,A;R)\cong\widetilde H_k(K/A;R)$.
+The degreewise short exact sequence of chain complexes is
+\[
+ 0\longrightarrow C_*(A;R)\xrightarrow{\ i\ }C_*(K;R)
+ \xrightarrow{\ j\ }C_*(K,A;R)\longrightarrow0.
+\]
+Here $i$ is inclusion and $j$ is the quotient projection.
+It induces the long exact sequence (coefficients $R$ suppressed)
+\[
+ \cdots\longrightarrow H_k(A)\xrightarrow{i_*}H_k(K)
+ \xrightarrow{j_*}H_k(K,A)\xrightarrow{\partial}
+ H_{k-1}(A)\xrightarrow{i_*}H_{k-1}(K)\longrightarrow\cdots.
+\]
+Following Hatcher, the connecting homomorphism is also denoted
+$\partial$:
+\[
+ \partial:H_k(K,A;R)\longrightarrow H_{k-1}(A;R),
+ \qquad [\overline c]\longmapsto[\partial_kc]_A.
+\]
+Indeed, lift a relative cycle to $c\in C_k(K;R)$; its boundary lies in
+$A$ and is a cycle there. Replacing the lift and representative by
+$c'=c+a+\partial_{k+1}b$, with $a\in C_k(A;R)$, changes this boundary
+by $\partial_ka$, hence not its homology class in $A$.
+
+The maps $\partial_k^{\mathrm{rel}}$ and $\partial$ have different domains
+and codomains: the first acts on relative chains, the second on relative
+homology. Neither is the boundary map of a relative homotopy sequence.
+
+\subsection*{From cellular maps to operator products}
+
+Choose additive-group homomorphisms
+\[
+ \rho:(C_1,+)\longrightarrow\operatorname{GL}(\mathcal H),
+ \qquad \Pi:(C^1,+)\longrightarrow\operatorname{GL}(\mathcal H).
+\]
+These are not $R$-linear maps into $\operatorname{GL}(\mathcal H)$.
+The typed compositions are
+\[
+ C_2\xrightarrow{\partial_2}C_1\xrightarrow{\rho}\operatorname{GL}(\mathcal H),
+ \qquad f\longmapsto\partial_2f\longmapsto B_f,
+\]
+\[
+ C^0\xrightarrow{\delta^0}C^1\xrightarrow{\Pi}\operatorname{GL}(\mathcal H),
+ \qquad v^\vee\longmapsto\delta^0v^\vee\longmapsto A_v.
+\]
+With $W_e(r):=\rho(re)$ and $U_e(r):=\Pi(re^\vee)$,
+\[
+ B_f:=\rho(\partial_2f)=\prod_e W_e([f:e]),
+ \qquad A_v:=\Pi(\delta^0v^\vee)=\prod_e U_e([e:v]).
+\]
+These compositions are neither chain complexes nor exact sequences.
+Locality, unitarity, and cross-commutation require representation data.
+
+\subsection*{Binary realization, syndromes, and logical classes}
+
+Over $\mathbb F_2$, let $D_*=C_*(K;\mathbb F_2)$ for a closed surface,
+or $D_*=C_*(K,A;\mathbb F_2)$ for a patch with rough boundary $A$.
+Write $d_k$ for its differential and $d^k$ for the dual. Assign a qubit
+to every cellular basis edge of $D_1$ and put $n=\dim D_1$. Then
+\[
+ D^k:=\operatorname{Hom}_{\mathbb F_2}(D_k,\mathbb F_2),
+ \qquad (d^kx)(c):=x(d_{k+1}c),
+ \quad x\in D^k,\ c\in D_{k+1}.
+\]
+The binary operator realization is
+\[
+ \mathcal H=(\mathbb C^2)^{\otimes n},
+ \qquad \rho(z)=\bigotimes_e Z^{z_e},
+ \qquad \Pi(x)=\bigotimes_e X^{x_e}.
+\]
+For $x\in D^1$ and $z\in D_1$, the Pauli relation is
+\[
+ \Pi(x)\rho(z)=(-1)^{x(z)}\rho(z)\Pi(x).
+\]
+Consequently, for $B_f=\rho(d_2f)$ and $A_v=\Pi(d^0v^\vee)$,
+\[
+ (d^0v^\vee)(d_2f)=v^\vee(d_1d_2f)=0
+ \quad\Longrightarrow\quad A_vB_f=B_fA_v.
+\]
+The syndromes and pure-type logical Pauli classes are
+\[
+ s_Z=d_1z\in D_0,\qquad s_X=d^1x\in D^2,
+\]
+\[
+ \mathcal L_Z\cong\ker d_1/\operatorname{im}d_2=H_1(D_*),
+ \qquad \mathcal L_X\cong\ker d^1/\operatorname{im}d^0=H^1(D_*).
+\]
+A correction $\widehat z$ with $d_1\widehat z=d_1z$ succeeds exactly when
+$[z+\widehat z]=0$ in $H_1(D_*)$. In cellular coordinates,
+\[
+ H_X=[d_1],\qquad H_Z=[d_2]^{\mathsf T},\qquad
+ H_XH_Z^{\mathsf T}=0.
+\]
+
+For a disk $K$ with two disjoint contractible rough arcs
+$A=A_0\sqcup A_1$, the pair sequence gives
+\[
+ 0\longrightarrow H_1(K,A;\mathbb F_2)\xrightarrow{\partial}
+ \mathbb F_2^2\xrightarrow{\ (a,b)\mapsto a+b\ }\mathbb F_2
+ \longrightarrow0.
+\]
+Hence $H_1(K,A;\mathbb F_2)\cong\mathbb F_2$: a path joining the two
+rough arcs represents the logical $Z$ class. Complementary smooth
+boundaries describe the dual paths for logical $X$, with the appropriate
+dual cellulation and consistent boundary assignments.
+
+\subsection*{A worked planar patch}
+
+Let $K=[0,2]\times[0,2]$ be divided into four unit-square faces.
+Let $A=A_L\sqcup A_R$ consist of its left and right sides, including
+their vertices and edges. These are the rough boundary arcs; the
+complementary top and bottom arcs are smooth, with corner points in $A$.
+We use the convention that $Z$ paths
+may terminate on rough boundaries, whereas dual $X$ paths may
+terminate on smooth boundaries.
+
+All coefficients are now in $\mathbb F_2$. Abbreviate
+\[
+ C_n=C_n(K,A;\mathbb F_2),\qquad
+ C^n=\operatorname{Hom}_{\mathbb F_2}(C_n,\mathbb F_2),
+\]
+and denote the induced relative differential by
+$\partial_n:C_n\to C_{n-1}$. A bar denotes a relative chain class,
+for example $\bar e=e+C_1(A;\mathbb F_2)$; brackets $[z]$ denote a
+homology class only when $z$ is a relative cycle.
+
+Index rows from top to bottom by $i=0,1,2$. Write $h_{iL},h_{iR}$
+for the horizontal edges joining the left, middle, and right columns.
+The middle vertical edges are $m_0,m_1$, and the middle-column
+vertices are $v_0,v_1,v_2$. The faces between rows $i$ and $i+1$ are
+$f_{iL},f_{iR}$, for $i=0,1$. Choose ordered bases
+\[
+ \mathcal B_2=(\bar f_{0L},\bar f_{0R},\bar f_{1L},\bar f_{1R}),
+ \qquad \mathcal B_0=(\bar v_0,\bar v_1,\bar v_2),
+\]
+\[
+ \mathcal B_1=(\bar h_{0L},\bar h_{0R},\bar h_{1L},\bar h_{1R},
+ \bar h_{2L},\bar h_{2R},\bar m_0,\bar m_1).
+\]
+The four vertical boundary edges and their six vertices vanish in
+the relative quotient. Hence
+\[
+ C_2\cong\mathbb F_2^4,\qquad C_1\cong\mathbb F_2^8,
+ \qquad C_0\cong\mathbb F_2^3.
+\]
+There are eight data qubits, one for each basis edge of $C_1$.
+
+The relative boundary formulas are
+\[
+ \partial_1\bar h_{iL}=\partial_1\bar h_{iR}=\bar v_i
+ \quad(0\leq i\leq2),\qquad
+ \partial_1\bar m_i=\bar v_i+\bar v_{i+1}\quad(0\leq i\leq1),
+\]
+\[
+ \partial_2\bar f_{iL}=\bar h_{iL}+\bar h_{i+1,L}+\bar m_i,
+ \qquad
+ \partial_2\bar f_{iR}=\bar h_{iR}+\bar h_{i+1,R}+\bar m_i
+ \quad(0\leq i\leq1).
+\]
+With coordinate columns in the stated bases,
+\[
+ [\partial_1]_{\mathcal B_0\leftarrow\mathcal B_1}
+ =\begin{pmatrix}
+ 1&1&0&0&0&0&1&0\\
+ 0&0&1&1&0&0&1&1\\
+ 0&0&0&0&1&1&0&1
+ \end{pmatrix},
+\]
+\[
+ [\partial_2]_{\mathcal B_1\leftarrow\mathcal B_2}
+ =\begin{pmatrix}
+ 1&0&0&0\\
+ 0&1&0&0\\
+ 1&0&1&0\\
+ 0&1&0&1\\
+ 0&0&1&0\\
+ 0&0&0&1\\
+ 1&1&0&0\\
+ 0&0&1&1
+ \end{pmatrix}.
+\]
+Direct multiplication and row reduction give
+\[
+ [\partial_1][\partial_2]=0_{3\times4},\qquad
+ \operatorname{rank}[\partial_1]=3,\qquad
+ \operatorname{rank}[\partial_2]=4.
+\]
+Therefore $\dim H_1(K,A;\mathbb F_2)=(8-3)-4=1$. The three
+independent star checks and four independent plaquette checks
+encode one qubit. For instance,
+\[
+ A_{v_1}=\Pi(\delta^0\bar v_1^\vee)
+ =X_{h_{1L}}X_{h_{1R}}X_{m_0}X_{m_1},
+ \qquad
+ B_{f_{0L}}=\rho(\partial_2\bar f_{0L})
+ =Z_{h_{0L}}Z_{h_{1L}}Z_{m_0}.
+\]
+
+\paragraph{A shared syndrome and two recoveries.}
+Take the actual $Z$-error label $z=\bar h_{1L}$. The proposed
+recovery $\widehat z=\bar h_{1R}$ has the same syndrome:
+\[
+ s_Z=\partial_1z=\partial_1\widehat z=\bar v_1,
+ \qquad [s_Z]_{\mathcal B_0}=\begin{pmatrix}0\\1\\0\end{pmatrix}.
+\]
+Its residual is the relative cycle
+\[
+ \ell_Z=z+\widehat z=\bar h_{1L}+\bar h_{1R},
+ \qquad \partial_1\ell_Z=0.
+\]
+Since $K$ is contractible and $A$ has two contractible components,
+the exact sequence of the pair reduces to
+\[
+ 0\longrightarrow H_1(K,A;\mathbb F_2)
+ \xrightarrow{\partial}H_0(A;\mathbb F_2)
+ \xrightarrow{i_*}H_0(K;\mathbb F_2)\longrightarrow0.
+\]
+Here $i_*(a,b)=a+b$ in component coordinates. The ordinary lift of
+$\ell_Z$ has one endpoint on each rough arc, so
+\[
+ \partial[\ell_Z]=[a_L]+[a_R]\ne0,
+ \qquad a_L\in A_L,\quad a_R\in A_R.
+\]
+Thus $[\ell_Z]\ne0$: this recovery removes the syndrome but leaves
+a logical error. The connecting map $\partial$ acts on homology
+classes; the relative chain differential $\partial_1$ acts on chains.
+
+A successful recovery for the same error is
+\[
+ \widehat z_{\mathrm{good}}=\bar h_{0L}+\bar m_0,
+ \qquad \partial_1\widehat z_{\mathrm{good}}=\bar v_1,
+ \qquad z+\widehat z_{\mathrm{good}}=\partial_2\bar f_{0L}.
+\]
+Its residual operator is the stabilizer $B_{f_{0L}}$, which acts as
+the identity on the code space. The recovery need not retrace the
+error; its residual must be a relative boundary.
+
+\paragraph{Homological deformation and the conjugate logical.}
+The top representative $\ell'_Z=\bar h_{0L}+\bar h_{0R}$ satisfies
+\[
+ \ell'_Z+\ell_Z=\partial_2(\bar f_{0L}+\bar f_{0R}),
+ \qquad [\ell'_Z]=[\ell_Z]\in H_1(K,A;\mathbb F_2).
+\]
+For a conjugate logical take the cochain
+\[
+ x=\bar h_{0L}^{\vee}+\bar h_{1L}^{\vee}+\bar h_{2L}^{\vee}
+ \in C^1(K,A;\mathbb F_2).
+\]
+It evaluates to zero on every face boundary and to one on $\ell_Z$:
+\[
+ \delta^1x=x\circ\partial_2=0,\qquad x(\ell_Z)=1.
+\]
+Hence both classes are nonzero, and the logical operators
+\[
+ \overline X=\Pi(x),\qquad \overline Z=\rho(\ell_Z)
+ \quad\text{satisfy}\quad
+ \overline X\,\overline Z=-\overline Z\,\overline X.
+\]
+The dual path depicting $x$ joins the smooth boundaries and crosses
+the primal representative $\ell_Z$ once. Its algebraic label remains
+a cochain, not a primal edge chain. This small patch has
+$d_Z=2$, $d_X=3$, and parameters $[[8,1,2]]$.
+
+\paragraph{Reference for notation.}
+Allen Hatcher, \emph{Algebraic Topology}, Chapter~2, pp.~115--118
+(relative chains and the connecting boundary), and Theorem~2.35,
+p.~139 (cellular homology); Chapter~3, pp.~197--198 (cochains and
+coboundaries).

@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="548" height="2220" viewBox="0 0 548 2220" role="img" aria-labelledby="title desc">
+<title id="title">A planar surface code from a relative cellular complex</title>
+<desc id="desc">Three exact diagrams of a two-by-two face disk K. The left and right boundary arcs form the rough subcomplex A. Six horizontal edges and two interior vertical edges carry eight data qubits; the three remaining vertices index X checks and the four faces index Z checks. Panel a labels every relative basis cell. Panel b shows Z error h1L and recovery h1R with the same syndrome v1; their residual is a nontrivial relative cycle. Panel c shows a horizontal Z logical cycle, an equivalent upper representative, and a vertical dual X logical path that crosses each left horizontal edge. The two logical representatives pair to one over the binary field.</desc>
+<defs>
+ <linearGradient id="paper" x2="0" y2="1"><stop stop-color="#fbfaf6" /><stop offset="1" stop-color="#f3f2ed" /></linearGradient>
+ <linearGradient id="card" x2="0" y2="1"><stop stop-color="#ffffff" /><stop offset="1" stop-color="#fcfbf8" /></linearGradient>
+ <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%"><feDropShadow dx="0" dy="4" stdDeviation="7" flood-color="#172f42" flood-opacity=".045" /></filter>
+ <filter id="syndrome" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="7" /></filter>
+ <marker id="arrow-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#157c86" stroke-width="1.5" /></marker>
+ <marker id="arrow-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#80649c" stroke-width="1.5" /></marker>
+</defs>
+<style>
+ .ui{font-family:Arial,Helvetica,sans-serif;fill:#1c3547} .math{font-family:Georgia,'Times New Roman',serif;fill:#18364a}
+ .sub{font-size:69%;baseline-shift:sub} .sup{font-size:69%;baseline-shift:super}
+ .muted{fill:#627680} .grid{stroke:#8e9ca5;stroke-width:2;fill:none}
+ .data{fill:#fff;stroke:#24465c;stroke-width:2.4} .vertex{fill:#157c86;stroke:#fff;stroke-width:2}
+ .edge-label{font-family:Georgia,'Times New Roman',serif;font-size:22px;fill:#29495c}
+</style>
+<rect width="548" height="2220" fill="url(#paper)" />
+
+<g id="panel-a" transform="translate(0,0)">
+<rect x="24" y="24" width="500" height="712" rx="22" fill="url(#card)" stroke="#dce2df" filter="url(#shadow)" />
+<circle cx="60" cy="64" r="17" fill="#e8eeed" />
+<text x="60" y="71" class="ui" font-size="22" text-anchor="middle">a</text>
+<text x="89" y="72" class="ui" font-size="25" text-anchor="start">Relative cells and physical qubits</text>
+<text x="52" y="110" class="ui muted" font-size="18" text-anchor="start">Rough arcs form the subcomplex A.</text>
+<path d="M90 188L458 188" fill="none" stroke="#d2e8e6" stroke-width="13" stroke-linecap="round" />
+<path d="M90 508L458 508" fill="none" stroke="#d2e8e6" stroke-width="13" stroke-linecap="round" />
+<path d="M90 188L90 508" fill="none" stroke="#ead7a8" stroke-width="12" stroke-linecap="round" />
+<path d="M90 188L90 508" fill="none" stroke="#b68f43" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 6" />
+<path d="M458 188L458 508" fill="none" stroke="#ead7a8" stroke-width="12" stroke-linecap="round" />
+<path d="M458 188L458 508" fill="none" stroke="#b68f43" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 6" />
+<path d="M90 188L458 188" fill="none" stroke="#8e9ca5" stroke-width="2" stroke-linecap="round" />
+<path d="M90 348L458 348" fill="none" stroke="#8e9ca5" stroke-width="2" stroke-linecap="round" />
+<path d="M90 508L458 508" fill="none" stroke="#8e9ca5" stroke-width="2" stroke-linecap="round" />
+<path d="M274 188L274 508" fill="none" stroke="#8e9ca5" stroke-width="2" stroke-linecap="round" />
+<circle cx="90" cy="188" r="4" fill="#fffaf0" stroke="#b68f43" stroke-width="1.6" />
+<circle cx="90" cy="348" r="4" fill="#fffaf0" stroke="#b68f43" stroke-width="1.6" />
+<circle cx="90" cy="508" r="4" fill="#fffaf0" stroke="#b68f43" stroke-width="1.6" />
+<circle cx="458" cy="188" r="4" fill="#fffaf0" stroke="#b68f43" stroke-width="1.6" />
+<circle cx="458" cy="348" r="4" fill="#fffaf0" stroke="#b68f43" stroke-width="1.6" />
+<circle cx="458" cy="508" r="4" fill="#fffaf0" stroke="#b68f43" stroke-width="1.6" />
+<text x="274" y="151" class="ui muted" font-size="18" text-anchor="middle">smooth</text>
+<text x="274" y="555" class="ui muted" font-size="18" text-anchor="middle">smooth</text>
+<text x="60" y="348" class="ui" font-size="18" fill="#8c6c31" text-anchor="middle" transform="rotate(-90 60 348)">rough · A<tspan class="sub">L</tspan></text>
+<text x="490" y="348" class="ui" font-size="18" fill="#8c6c31" text-anchor="middle" transform="rotate(90 490 348)">rough · A<tspan class="sub">R</tspan></text>
+<circle cx="182" cy="188" r="7" fill="#fff" stroke="#24465c" stroke-width="2.3" />
+<text x="182" y="169" class="math" font-size="22" text-anchor="middle">h<tspan class="sub">0L</tspan></text>
+<circle cx="366" cy="188" r="7" fill="#fff" stroke="#24465c" stroke-width="2.3" />
+<text x="366" y="169" class="math" font-size="22" text-anchor="middle">h<tspan class="sub">0R</tspan></text>
+<circle cx="274" cy="188" r="6" fill="#157c86" stroke="#fff" stroke-width="1.5" />
+<text x="291" y="213" class="math" font-size="22" text-anchor="start">v<tspan class="sub">0</tspan></text>
+<circle cx="182" cy="348" r="7" fill="#fff" stroke="#24465c" stroke-width="2.3" />
+<text x="182" y="329" class="math" font-size="22" text-anchor="middle">h<tspan class="sub">1L</tspan></text>
+<circle cx="366" cy="348" r="7" fill="#fff" stroke="#24465c" stroke-width="2.3" />
+<text x="366" y="329" class="math" font-size="22" text-anchor="middle">h<tspan class="sub">1R</tspan></text>
+<circle cx="274" cy="348" r="6" fill="#157c86" stroke="#fff" stroke-width="1.5" />
+<text x="291" y="373" class="math" font-size="22" text-anchor="start">v<tspan class="sub">1</tspan></text>
+<circle cx="182" cy="508" r="7" fill="#fff" stroke="#24465c" stroke-width="2.3" />
+<text x="182" y="489" class="math" font-size="22" text-anchor="middle">h<tspan class="sub">2L</tspan></text>
+<circle cx="366" cy="508" r="7" fill="#fff" stroke="#24465c" stroke-width="2.3" />
+<text x="366" y="489" class="math" font-size="22" text-anchor="middle">h<tspan class="sub">2R</tspan></text>
+<circle cx="274" cy="508" r="6" fill="#157c86" stroke="#fff" stroke-width="1.5" />
+<text x="291" y="533" class="math" font-size="22" text-anchor="start">v<tspan class="sub">2</tspan></text>
+<circle cx="274" cy="268" r="7" fill="#fff" stroke="#24465c" stroke-width="2.3" />
+<text x="293" y="273" class="math" font-size="22" text-anchor="start">m<tspan class="sub">0</tspan></text>
+<text x="182" y="284" class="math" font-size="23" text-anchor="middle" fill="#788994">f<tspan class="sub">0L</tspan></text>
+<text x="366" y="284" class="math" font-size="23" text-anchor="middle" fill="#788994">f<tspan class="sub">0R</tspan></text>
+<circle cx="274" cy="428" r="7" fill="#fff" stroke="#24465c" stroke-width="2.3" />
+<text x="293" y="433" class="math" font-size="22" text-anchor="start">m<tspan class="sub">1</tspan></text>
+<text x="182" y="444" class="math" font-size="23" text-anchor="middle" fill="#788994">f<tspan class="sub">1L</tspan></text>
+<text x="366" y="444" class="math" font-size="23" text-anchor="middle" fill="#788994">f<tspan class="sub">1R</tspan></text>
+<circle cx="66" cy="599" r="7" fill="#fff" stroke="#24465c" stroke-width="2.3" />
+<text x="84" y="606" class="ui" font-size="20" text-anchor="start">8 edge qubits</text>
+<circle cx="66" cy="637" r="6" fill="#157c86" />
+<text x="84" y="644" class="ui" font-size="20" text-anchor="start">3 vertex X checks</text>
+<rect x="59" y="670" width="14" height="14" rx="2" fill="#dce5e9" stroke="#8097a2" />
+<text x="84" y="684" class="ui" font-size="20" text-anchor="start">4 face Z checks</text>
+</g>
+<g id="panel-b" transform="translate(-526,730)">
+<rect x="550" y="24" width="500" height="712" rx="22" fill="url(#card)" stroke="#dce2df" filter="url(#shadow)" />
+<circle cx="586" cy="64" r="17" fill="#e8eeed" />
+<text x="586" y="71" class="ui" font-size="22" text-anchor="middle">b</text>
+<text x="615" y="72" class="ui" font-size="25" text-anchor="start">One syndrome, two possible chains</text>
+<text x="578" y="110" class="ui muted" font-size="18" text-anchor="start">A boundary endpoint is absent in the quotient.</text>
+<path d="M616 188L984 188" fill="none" stroke="#d2e8e6" stroke-width="13" stroke-linecap="round" />
+<path d="M616 508L984 508" fill="none" stroke="#d2e8e6" stroke-width="13" stroke-linecap="round" />
+<path d="M616 188L616 508" fill="none" stroke="#ead7a8" stroke-width="12" stroke-linecap="round" />
+<path d="M616 188L616 508" fill="none" stroke="#b68f43" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 6" />
+<path d="M984 188L984 508" fill="none" stroke="#ead7a8" stroke-width="12" stroke-linecap="round" />
+<path d="M984 188L984 508" fill="none" stroke="#b68f43" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 6" />
+<path d="M616 188L984 188" fill="none" stroke="#8e9ca5" stroke-width="2" stroke-linecap="round" />
+<path d="M616 348L984 348" fill="none" stroke="#8e9ca5" stroke-width="2" stroke-linecap="round" />
+<path d="M616 508L984 508" fill="none" stroke="#8e9ca5" stroke-width="2" stroke-linecap="round" />
+<path d="M800 188L800 508" fill="none" stroke="#8e9ca5" stroke-width="2" stroke-linecap="round" />
+<circle cx="616" cy="188" r="4" fill="#fffaf0" stroke="#b68f43" stroke-width="1.6" />
+<circle cx="616" cy="348" r="4" fill="#fffaf0" stroke="#b68f43" stroke-width="1.6" />
+<circle cx="616" cy="508" r="4" fill="#fffaf0" stroke="#b68f43" stroke-width="1.6" />
+<circle cx="984" cy="188" r="4" fill="#fffaf0" stroke="#b68f43" stroke-width="1.6" />
+<circle cx="984" cy="348" r="4" fill="#fffaf0" stroke="#b68f43" stroke-width="1.6" />
+<circle cx="984" cy="508" r="4" fill="#fffaf0" stroke="#b68f43" stroke-width="1.6" />
+<circle cx="800" cy="188" r="5" fill="#8fa7ad" stroke="#fff" stroke-width="1.5" />
+<circle cx="800" cy="348" r="5" fill="#8fa7ad" stroke="#fff" stroke-width="1.5" />
+<circle cx="800" cy="508" r="5" fill="#8fa7ad" stroke="#fff" stroke-width="1.5" />
+<circle cx="708" cy="188" r="5" fill="#fff" stroke="#9aa9af" stroke-width="1.5" />
+<circle cx="892" cy="188" r="5" fill="#fff" stroke="#9aa9af" stroke-width="1.5" />
+<circle cx="708" cy="348" r="5" fill="#fff" stroke="#9aa9af" stroke-width="1.5" />
+<circle cx="892" cy="348" r="5" fill="#fff" stroke="#9aa9af" stroke-width="1.5" />
+<circle cx="708" cy="508" r="5" fill="#fff" stroke="#9aa9af" stroke-width="1.5" />
+<circle cx="892" cy="508" r="5" fill="#fff" stroke="#9aa9af" stroke-width="1.5" />
+<circle cx="800" cy="268" r="5" fill="#fff" stroke="#9aa9af" stroke-width="1.5" />
+<circle cx="800" cy="428" r="5" fill="#fff" stroke="#9aa9af" stroke-width="1.5" />
+<path d="M616 348L800 348" fill="none" stroke="#c56850" stroke-width="7" stroke-linecap="round" />
+<path d="M800 348L984 348" fill="none" stroke="#80649c" stroke-width="7" stroke-linecap="round" stroke-dasharray="11 8" />
+<circle cx="800" cy="348" r="22" fill="#dba58b" filter="url(#syndrome)" opacity=".55" />
+<circle cx="800" cy="348" r="11" fill="#c56850" stroke="#fff" stroke-width="3" />
+<circle cx="616" cy="348" r="8" fill="#fff8ed" stroke="#b68f43" stroke-width="2" />
+<circle cx="984" cy="348" r="8" fill="#fff8ed" stroke="#b68f43" stroke-width="2" />
+<text x="708" y="319" class="math" font-size="25" text-anchor="middle" fill="#a34f3e">z = h̄<tspan class="sub">1L</tspan></text>
+<text x="892" y="319" class="math" font-size="25" text-anchor="middle" fill="#73558d">ẑ = h̄<tspan class="sub">1R</tspan></text>
+<text x="800" y="390" class="math" font-size="25" text-anchor="middle" fill="#a34f3e">s = v̄<tspan class="sub">1</tspan></text>
+<text x="800" y="157" class="ui muted" font-size="18" text-anchor="middle">No syndrome on the rough arcs</text>
+<text x="800" y="574" class="math" font-size="27" text-anchor="middle">∂<tspan class="sub">1</tspan>z = ∂<tspan class="sub">1</tspan>ẑ = v̄<tspan class="sub">1</tspan></text>
+<text x="800" y="620" class="math" font-size="28" text-anchor="middle">z + ẑ = ℓ<tspan class="sub">Z</tspan></text>
+<text x="800" y="665" class="math" font-size="26" text-anchor="middle">∂<tspan class="sub">1</tspan>ℓ<tspan class="sub">Z</tspan> = 0, [ℓ<tspan class="sub">Z</tspan>] ≠ 0</text>
+<text x="800" y="707" class="ui muted" font-size="17" text-anchor="middle">Same syndrome does not determine a homology class.</text>
+</g>
+<g id="panel-c" transform="translate(-1052,1460)">
+<rect x="1076" y="24" width="500" height="712" rx="22" fill="url(#card)" stroke="#dce2df" filter="url(#shadow)" />
+<circle cx="1112" cy="64" r="17" fill="#e8eeed" />
+<text x="1112" y="71" class="ui" font-size="22" text-anchor="middle">c</text>
+<text x="1141" y="72" class="ui" font-size="25" text-anchor="start">Logical operators and duality</text>
+<text x="1104" y="110" class="ui muted" font-size="18" text-anchor="start">The surviving classes pair nontrivially.</text>
+<path d="M1142 188L1510 188" fill="none" stroke="#d2e8e6" stroke-width="13" stroke-linecap="round" />
+<path d="M1142 508L1510 508" fill="none" stroke="#d2e8e6" stroke-width="13" stroke-linecap="round" />
+<path d="M1142 188L1142 508" fill="none" stroke="#ead7a8" stroke-width="12" stroke-linecap="round" />
+<path d="M1142 188L1142 508" fill="none" stroke="#b68f43" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 6" />
+<path d="M1510 188L1510 508" fill="none" stroke="#ead7a8" stroke-width="12" stroke-linecap="round" />
+<path d="M1510 188L1510 508" fill="none" stroke="#b68f43" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 6" />
+<path d="M1142 188L1510 188" fill="none" stroke="#8e9ca5" stroke-width="2" stroke-linecap="round" />
+<path d="M1142 348L1510 348" fill="none" stroke="#8e9ca5" stroke-width="2" stroke-linecap="round" />
+<path d="M1142 508L1510 508" fill="none" stroke="#8e9ca5" stroke-width="2" stroke-linecap="round" />
+<path d="M1326 188L1326 508" fill="none" stroke="#8e9ca5" stroke-width="2" stroke-linecap="round" />
+<circle cx="1142" cy="188" r="4" fill="#fffaf0" stroke="#b68f43" stroke-width="1.6" />
+<circle cx="1142" cy="348" r="4" fill="#fffaf0" stroke="#b68f43" stroke-width="1.6" />
+<circle cx="1142" cy="508" r="4" fill="#fffaf0" stroke="#b68f43" stroke-width="1.6" />
+<circle cx="1510" cy="188" r="4" fill="#fffaf0" stroke="#b68f43" stroke-width="1.6" />
+<circle cx="1510" cy="348" r="4" fill="#fffaf0" stroke="#b68f43" stroke-width="1.6" />
+<circle cx="1510" cy="508" r="4" fill="#fffaf0" stroke="#b68f43" stroke-width="1.6" />
+<path d="M1142 188H1510V348H1142Z" fill="#d8e8e5" opacity=".48" />
+<path d="M1142 188L1510 188" fill="none" stroke="#b68f43" stroke-width="4" stroke-linecap="round" stroke-dasharray="5 7" />
+<path d="M1142 348L1510 348" fill="none" stroke="#157c86" stroke-width="7" stroke-linecap="round" />
+<path d="M1234 150L1234 548" fill="none" stroke="#80649c" stroke-width="4" stroke-linecap="round" stroke-dasharray="10 8" marker-end="url(#arrow-violet)" />
+<circle cx="1234" cy="188" r="5" fill="#fff" stroke="#9aa9af" stroke-width="1.5" />
+<circle cx="1418" cy="188" r="5" fill="#fff" stroke="#9aa9af" stroke-width="1.5" />
+<circle cx="1234" cy="348" r="5" fill="#fff" stroke="#9aa9af" stroke-width="1.5" />
+<circle cx="1418" cy="348" r="5" fill="#fff" stroke="#9aa9af" stroke-width="1.5" />
+<circle cx="1234" cy="508" r="5" fill="#fff" stroke="#9aa9af" stroke-width="1.5" />
+<circle cx="1418" cy="508" r="5" fill="#fff" stroke="#9aa9af" stroke-width="1.5" />
+<circle cx="1326" cy="268" r="5" fill="#fff" stroke="#9aa9af" stroke-width="1.5" />
+<circle cx="1326" cy="428" r="5" fill="#fff" stroke="#9aa9af" stroke-width="1.5" />
+<circle cx="1326" cy="188" r="5" fill="#8fa7ad" stroke="#fff" stroke-width="1.5" />
+<circle cx="1326" cy="348" r="5" fill="#8fa7ad" stroke="#fff" stroke-width="1.5" />
+<circle cx="1326" cy="508" r="5" fill="#8fa7ad" stroke="#fff" stroke-width="1.5" />
+<circle cx="1234" cy="188" r="7" fill="#f4eef9" stroke="#80649c" stroke-width="2" />
+<circle cx="1234" cy="348" r="7" fill="#f4eef9" stroke="#80649c" stroke-width="2" />
+<circle cx="1234" cy="508" r="7" fill="#f4eef9" stroke="#80649c" stroke-width="2" />
+<circle cx="1234" cy="348" r="14" fill="#fcfbf8" stroke="#b68f43" stroke-width="2" />
+<circle cx="1234" cy="348" r="5" fill="#80649c" />
+<text x="1439" y="168" class="math" font-size="26" text-anchor="middle" fill="#987632">ℓ′<tspan class="sub">Z</tspan></text>
+<text x="1440" y="386" class="math" font-size="27" text-anchor="middle" fill="#157c86">ℓ<tspan class="sub">Z</tspan></text>
+<text x="1216" y="462" class="math" font-size="29" text-anchor="end" fill="#80649c">x</text>
+<text x="1368" y="270" class="ui muted" font-size="18" text-anchor="middle">one crossing</text>
+<path d="M1322 278L1252 331" fill="none" stroke="#adb9bc" stroke-width="1.5" stroke-linecap="round" />
+<text x="1326" y="577" class="math" font-size="28" text-anchor="middle">⟨x, ℓ<tspan class="sub">Z</tspan>⟩ = 1 ∈ 𝔽<tspan class="sub">2</tspan></text>
+<text x="1326" y="622" class="math" font-size="24" text-anchor="middle">ℓ′<tspan class="sub">Z</tspan> + ℓ<tspan class="sub">Z</tspan> = ∂<tspan class="sub">2</tspan>(f̄<tspan class="sub">0L</tspan> + f̄<tspan class="sub">0R</tspan>)</text>
+<text x="1326" y="665" class="math" font-size="24" text-anchor="middle">[ℓ′<tspan class="sub">Z</tspan>] = [ℓ<tspan class="sub">Z</tspan>] ∈ H<tspan class="sub">1</tspan>(K,A;𝔽<tspan class="sub">2</tspan>)</text>
+<text x="1326" y="707" class="math" font-size="21" text-anchor="middle">X(x) Z(ℓZ) = − Z(ℓZ) X(x)</text>
+</g>
+</svg>

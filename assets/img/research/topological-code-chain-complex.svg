@@ -1,0 +1,215 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1080" viewBox="0 0 1400 1080" role="img" aria-labelledby="title desc">
+<title id="title">Local surface-code supports derived from cellular maps</title><desc id="desc">Two matching square lattice patches use the same edge labels. Physical qubits sit at edge midpoints. A face f has chain boundary z equal to e1 plus e2 plus e3 plus e4, producing a Z plaquette. The dual vertex cochain v dual has coboundary x equal to e1 dual plus e4 dual plus e5 dual plus e6 dual, producing an X star. They share exactly e1 and e4, so x(z) equals zero over F two. The boundary complex and its dual supply the domains of these labels; Pauli labeling maps then turn them into commuting operators. These are local supports, not a complete finite surface code.</desc>
+<defs>
+  <linearGradient id="paper" x2="0" y2="1"><stop stop-color="#fcfbf7"/><stop offset="1" stop-color="#f1f1eb"/></linearGradient>
+  <linearGradient id="surface" x1="0" y1="0" x2=".7" y2="1"><stop stop-color="#eff5f2"/><stop offset=".5" stop-color="#d6e6e0"/><stop offset="1" stop-color="#afcbc4"/></linearGradient>
+  <linearGradient id="face" x2="1" y2="1"><stop stop-color="#dbf1e8"/><stop offset="1" stop-color="#97c9b9"/></linearGradient>
+  <radialGradient id="halo"><stop stop-color="#80629a" stop-opacity=".17"/><stop offset="1" stop-color="#80629a" stop-opacity="0"/></radialGradient>
+  <filter id="shadow" x="-.2" y="-.3" width="1.4" height="1.7"><feGaussianBlur stdDeviation="15"/></filter>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#253e4a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  <marker id="tealArrow" markerWidth="11" markerHeight="11" refX="8" refY="5.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L9 5.5 L1 10" fill="none" stroke="#217f79" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  <marker id="blueArrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L10 6 L1 11" fill="none" stroke="#3d6487" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  <marker id="violetArrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#80629a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  <style>
+    text{font-family:Georgia,'Times New Roman',serif;fill:#253e4a}
+    .math{font-style:italic} .sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+    .small{font-size:22px} .muted{fill:#68777c} .teal{fill:#217f79} .violet{fill:#80629a} .gold{fill:#b88d43}
+    .arrow{fill:none;stroke:#253e4a;stroke-width:2;marker-end:url(#arrow)}
+  </style>
+</defs><rect width="1400" height="1080" rx="26" fill="url(#paper)"/>
+<rect x="28" y="28" width="656" height="632" rx="20" fill="#fff" fill-opacity=".64" stroke="#d2e3da"/>
+<rect x="716" y="28" width="656" height="632" rx="20" fill="#fff" fill-opacity=".64" stroke="#ded5e5"/>
+<text x="68" y="81" font-size="32" class="math teal" text-anchor="start">f ∈ C₂(K;𝔽₂)</text>
+<text x="756" y="81" font-size="32" class="math violet" text-anchor="start">v<tspan baseline-shift="super" font-size="20">∨</tspan> ∈ C⁰(K;𝔽₂)</text>
+<text x="644" y="80" font-size="22" class="sans muted" text-anchor="end">face boundary</text>
+<text x="1332" y="80" font-size="22" class="sans muted" text-anchor="end">vertex coboundary</text>
+<rect x="131" y="140" width="380" height="380" rx="12" fill="#edf0ed" opacity=".65"/>
+<path d="M156.00,165.00 L266.00,165.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M156.00,165.00 L156.00,275.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M156.00,275.00 L266.00,275.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M156.00,275.00 L156.00,385.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M156.00,385.00 L266.00,385.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M156.00,385.00 L156.00,495.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M156.00,495.00 L266.00,495.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M266.00,165.00 L376.00,165.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M266.00,165.00 L266.00,275.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M266.00,275.00 L376.00,275.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M266.00,275.00 L266.00,385.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M266.00,385.00 L376.00,385.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M266.00,385.00 L266.00,495.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M266.00,495.00 L376.00,495.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M376.00,165.00 L486.00,165.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M376.00,165.00 L376.00,275.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M376.00,275.00 L486.00,275.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M376.00,275.00 L376.00,385.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M376.00,385.00 L486.00,385.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M376.00,385.00 L376.00,495.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M376.00,495.00 L486.00,495.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M486.00,165.00 L486.00,275.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M486.00,275.00 L486.00,385.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M486.00,385.00 L486.00,495.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<rect x="266" y="275" width="110" height="110" fill="url(#face)" opacity="0.85"/>
+<rect x="819" y="140" width="380" height="380" rx="12" fill="#edf0ed" opacity=".65"/>
+<path d="M844.00,165.00 L954.00,165.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M844.00,165.00 L844.00,275.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M844.00,275.00 L954.00,275.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M844.00,275.00 L844.00,385.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M844.00,385.00 L954.00,385.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M844.00,385.00 L844.00,495.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M844.00,495.00 L954.00,495.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M954.00,165.00 L1064.00,165.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M954.00,165.00 L954.00,275.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M954.00,275.00 L1064.00,275.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M954.00,275.00 L954.00,385.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M954.00,385.00 L1064.00,385.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M954.00,385.00 L954.00,495.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M954.00,495.00 L1064.00,495.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M1064.00,165.00 L1174.00,165.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M1064.00,165.00 L1064.00,275.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M1064.00,275.00 L1174.00,275.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M1064.00,275.00 L1064.00,385.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M1064.00,385.00 L1174.00,385.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M1064.00,385.00 L1064.00,495.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M1064.00,495.00 L1174.00,495.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M1174.00,165.00 L1174.00,275.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M1174.00,275.00 L1174.00,385.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M1174.00,385.00 L1174.00,495.00" fill="none" stroke="#becacb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<rect x="954" y="275" width="110" height="110" fill="url(#face)" opacity="0.28"/>
+<path d="M266.00,275.00 L376.00,275.00" fill="none" stroke="#217f79" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M376.00,275.00 L376.00,385.00" fill="none" stroke="#217f79" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M376.00,385.00 L266.00,385.00" fill="none" stroke="#217f79" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M266.00,385.00 L266.00,275.00" fill="none" stroke="#217f79" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="954" cy="275" r="132" fill="url(#halo)"/>
+<path d="M954.00,275.00 L1064.00,275.00" fill="none" stroke="#80629a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M954.00,275.00 L954.00,385.00" fill="none" stroke="#80629a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M844.00,275.00 L954.00,275.00" fill="none" stroke="#80629a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M954.00,165.00 L954.00,275.00" fill="none" stroke="#80629a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="156" cy="165" r="4.4" fill="#253e4a"/>
+<circle cx="211.0" cy="165" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="156" cy="220.0" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="156" cy="275" r="4.4" fill="#253e4a"/>
+<circle cx="211.0" cy="275" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="156" cy="330.0" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="156" cy="385" r="4.4" fill="#253e4a"/>
+<circle cx="211.0" cy="385" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="156" cy="440.0" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="156" cy="495" r="4.4" fill="#253e4a"/>
+<circle cx="211.0" cy="495" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="266" cy="165" r="4.4" fill="#253e4a"/>
+<circle cx="321.0" cy="165" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="266" cy="220.0" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="266" cy="275" r="4.4" fill="#253e4a"/>
+<circle cx="321.0" cy="275" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="266" cy="330.0" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="266" cy="385" r="4.4" fill="#253e4a"/>
+<circle cx="321.0" cy="385" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="266" cy="440.0" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="266" cy="495" r="4.4" fill="#253e4a"/>
+<circle cx="321.0" cy="495" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="376" cy="165" r="4.4" fill="#253e4a"/>
+<circle cx="431.0" cy="165" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="376" cy="220.0" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="376" cy="275" r="4.4" fill="#253e4a"/>
+<circle cx="431.0" cy="275" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="376" cy="330.0" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="376" cy="385" r="4.4" fill="#253e4a"/>
+<circle cx="431.0" cy="385" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="376" cy="440.0" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="376" cy="495" r="4.4" fill="#253e4a"/>
+<circle cx="431.0" cy="495" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="486" cy="165" r="4.4" fill="#253e4a"/>
+<circle cx="486" cy="220.0" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="486" cy="275" r="4.4" fill="#253e4a"/>
+<circle cx="486" cy="330.0" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="486" cy="385" r="4.4" fill="#253e4a"/>
+<circle cx="486" cy="440.0" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="486" cy="495" r="4.4" fill="#253e4a"/>
+<circle cx="844" cy="165" r="4.4" fill="#253e4a"/>
+<circle cx="899.0" cy="165" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="844" cy="220.0" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="844" cy="275" r="4.4" fill="#253e4a"/>
+<circle cx="899.0" cy="275" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="844" cy="330.0" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="844" cy="385" r="4.4" fill="#253e4a"/>
+<circle cx="899.0" cy="385" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="844" cy="440.0" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="844" cy="495" r="4.4" fill="#253e4a"/>
+<circle cx="899.0" cy="495" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="954" cy="165" r="4.4" fill="#253e4a"/>
+<circle cx="1009.0" cy="165" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="954" cy="220.0" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="954" cy="275" r="4.4" fill="#253e4a"/>
+<circle cx="1009.0" cy="275" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="954" cy="330.0" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="954" cy="385" r="4.4" fill="#253e4a"/>
+<circle cx="1009.0" cy="385" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="954" cy="440.0" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="954" cy="495" r="4.4" fill="#253e4a"/>
+<circle cx="1009.0" cy="495" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="1064" cy="165" r="4.4" fill="#253e4a"/>
+<circle cx="1119.0" cy="165" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="1064" cy="220.0" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="1064" cy="275" r="4.4" fill="#253e4a"/>
+<circle cx="1119.0" cy="275" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="1064" cy="330.0" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="1064" cy="385" r="4.4" fill="#253e4a"/>
+<circle cx="1119.0" cy="385" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="1064" cy="440.0" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="1064" cy="495" r="4.4" fill="#253e4a"/>
+<circle cx="1119.0" cy="495" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="1174" cy="165" r="4.4" fill="#253e4a"/>
+<circle cx="1174" cy="220.0" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="1174" cy="275" r="4.4" fill="#253e4a"/>
+<circle cx="1174" cy="330.0" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="1174" cy="385" r="4.4" fill="#253e4a"/>
+<circle cx="1174" cy="440.0" r="5.6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<circle cx="1174" cy="495" r="4.4" fill="#253e4a"/>
+<circle cx="321.0" cy="275.0" r="10" fill="#217f79" stroke="#fcfbf7" stroke-width="3"/>
+<circle cx="376.0" cy="330.0" r="10" fill="#217f79" stroke="#fcfbf7" stroke-width="3"/>
+<circle cx="321.0" cy="385.0" r="10" fill="#217f79" stroke="#fcfbf7" stroke-width="3"/>
+<circle cx="266.0" cy="330.0" r="10" fill="#217f79" stroke="#fcfbf7" stroke-width="3"/>
+<circle cx="1009.0" cy="275.0" r="10" fill="#80629a" stroke="#fcfbf7" stroke-width="3"/>
+<circle cx="954.0" cy="330.0" r="10" fill="#80629a" stroke="#fcfbf7" stroke-width="3"/>
+<circle cx="899.0" cy="275.0" r="10" fill="#80629a" stroke="#fcfbf7" stroke-width="3"/>
+<circle cx="954.0" cy="220.0" r="10" fill="#80629a" stroke="#fcfbf7" stroke-width="3"/>
+<circle cx="321" cy="275" r="15" fill="none" stroke="#b88d43" stroke-width="2.3"/>
+<circle cx="266" cy="330" r="15" fill="none" stroke="#b88d43" stroke-width="2.3"/>
+<circle cx="1009" cy="275" r="15" fill="none" stroke="#b88d43" stroke-width="2.3"/>
+<circle cx="954" cy="330" r="15" fill="none" stroke="#b88d43" stroke-width="2.3"/>
+<text x="321" y="340" font-size="35" class="math teal" text-anchor="middle">f</text>
+<text x="241" y="260" font-size="28" class="math" text-anchor="start">v</text>
+<text x="976" y="309" font-size="30" class="math violet" text-anchor="start">v</text>
+<text x="321" y="248" font-size="27" class="math teal" text-anchor="middle">e₁</text>
+<text x="403" y="337" font-size="27" class="math teal" text-anchor="start">e₂</text>
+<text x="321" y="422" font-size="27" class="math teal" text-anchor="middle">e₃</text>
+<text x="237" y="338" font-size="27" class="math teal" text-anchor="end">e₄</text>
+<text x="1009" y="248" font-size="27" class="math violet" text-anchor="middle">e₁<tspan baseline-shift="super" font-size="17">∨</tspan></text>
+<text x="977" y="348" font-size="27" class="math violet" text-anchor="start">e₄<tspan baseline-shift="super" font-size="17">∨</tspan></text>
+<text x="899" y="248" font-size="27" class="math violet" text-anchor="middle">e₅<tspan baseline-shift="super" font-size="17">∨</tspan></text>
+<text x="977" y="223" font-size="27" class="math violet" text-anchor="start">e₆<tspan baseline-shift="super" font-size="17">∨</tspan></text>
+<text x="356" y="552" font-size="29" class="math teal" text-anchor="middle">z = ∂₂f = e₁ + e₂ + e₃ + e₄</text>
+<text x="1044" y="552" font-size="29" class="math violet" text-anchor="middle">x = δ⁰v<tspan baseline-shift="super" font-size="19">∨</tspan> = e₁<tspan baseline-shift="super" font-size="19">∨</tspan> + e₄<tspan baseline-shift="super" font-size="19">∨</tspan> + e₅<tspan baseline-shift="super" font-size="19">∨</tspan> + e₆<tspan baseline-shift="super" font-size="19">∨</tspan></text>
+<text x="356" y="606" font-size="31" class="math teal" text-anchor="middle">B<tspan baseline-shift="sub" font-size="20">f</tspan> = ρ(z) = Z₁Z₂Z₃Z₄</text>
+<text x="1044" y="606" font-size="31" class="math violet" text-anchor="middle">A<tspan baseline-shift="sub" font-size="20">v</tspan> = Π(x) = X₁X₄X₅X₆</text>
+<circle cx="135" cy="699" r="6" fill="#fcfbf7" stroke="#a5b4b7" stroke-width="1.7"/>
+<text x="152" y="706" font-size="22" class="sans muted" text-anchor="start">edge qubit</text>
+<circle cx="492" cy="699" r="10" fill="none" stroke="#b88d43" stroke-width="2.2"/>
+<text x="510" y="706" font-size="22" class="sans muted" text-anchor="start">shared edge</text>
+<text x="1116" y="706" font-size="24" class="math muted" text-anchor="middle">coefficients in 𝔽₂</text>
+<text x="240" y="776" font-size="31" class="math" text-anchor="middle">C₂(K;𝔽₂)</text>
+<text x="700" y="776" font-size="31" class="math" text-anchor="middle">C₁(K;𝔽₂)</text>
+<text x="1160" y="776" font-size="31" class="math" text-anchor="middle">C₀(K;𝔽₂)</text>
+<path d="M352 766 H586" class="arrow"/><path d="M812 766 H1046" class="arrow"/>
+<text x="469" y="748" font-size="25" class="math teal" text-anchor="middle">∂₂</text>
+<text x="929" y="748" font-size="25" class="math" text-anchor="middle">∂₁</text>
+<text x="240" y="860" font-size="31" class="math" text-anchor="middle">C²(K;𝔽₂)</text>
+<text x="700" y="860" font-size="31" class="math" text-anchor="middle">C¹(K;𝔽₂)</text>
+<text x="1160" y="860" font-size="31" class="math" text-anchor="middle">C⁰(K;𝔽₂)</text>
+<path d="M586 850 H352" class="arrow"/><path d="M1046 850 H812" class="arrow"/>
+<text x="469" y="886" font-size="25" class="math" text-anchor="middle">δ¹</text>
+<text x="929" y="886" font-size="25" class="math violet" text-anchor="middle">δ⁰</text>
+<path d="M102 916 H1298" stroke="#d9dfdc" stroke-width="1.4"/>
+<text x="700" y="957" font-size="31" class="math" text-anchor="middle">x(z) = (δ⁰v<tspan baseline-shift="super" font-size="20">∨</tspan>)(∂₂f) = v<tspan baseline-shift="super" font-size="20">∨</tspan>(∂₁∂₂f) = 1 + 1 = 0</text>
+<text x="700" y="1003" font-size="30" class="math" text-anchor="middle">A<tspan baseline-shift="sub" font-size="19">v</tspan>B<tspan baseline-shift="sub" font-size="19">f</tspan> = (−1)<tspan baseline-shift="super" font-size="19">x(z)</tspan>B<tspan baseline-shift="sub" font-size="19">f</tspan>A<tspan baseline-shift="sub" font-size="19">v</tspan> = B<tspan baseline-shift="sub" font-size="19">f</tspan>A<tspan baseline-shift="sub" font-size="19">v</tspan></text>
+<text x="700" y="1050" font-size="21" class="sans muted" text-anchor="middle">Local supports only. Logical qubits depend on global topology and the chosen boundary subcomplex.</text>
+</svg>
