@@ -315,11 +315,11 @@ sup, sub { line-height: 0; }
   transition: opacity .6s ease;
 }
 .eq-note {
-  margin: 0;
+  margin: 8px 0 0;
+  min-height: 3.1em;
   font-size: 14px; line-height: 1.55;
   color: var(--hero-ink-2);
-  max-width: 40em;
-  transition: opacity .6s ease;
+  max-width: 42em;
 }
 .eq-note .src { font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; color: var(--hero-ink-3); white-space: nowrap; }
 .eq-pager {
@@ -607,7 +607,7 @@ h2.title em { color: var(--gold); font-weight: 400; }
   letter-spacing: -.02em;
 }
 .chapter-no small { display: block; font-family: var(--font-mono); font-style: normal; font-size: 10.5px; letter-spacing: .2em; color: var(--ink-3); margin-top: 10px; text-transform: uppercase; }
-.chapter h3.ch-title {
+.chapter-head .ch-title {
   font-family: var(--font-display); font-weight: 400;
   font-size: clamp(28px, 2.6vw, 40px); line-height: 1.12; margin: 4px 0 12px;
 }
@@ -956,8 +956,8 @@ h2.title em { color: var(--gold); font-weight: 400; }
 .note-preview { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 56px); align-items: start; }
 .note-preview .fig { margin: 0; max-width: 540px; }
 .note-meta { font-family: var(--font-mono); font-size: 11px; color: var(--gold); letter-spacing: .06em; margin: 0 0 16px; }
-.note-preview h3 { font: 500 clamp(27px, 2.5vw, 36px)/1.16 var(--font-display); margin: 0 0 20px; }
-.note-preview h3 a { text-decoration: none; }
+.note-preview h3, .note-preview h4 { font: 500 clamp(27px, 2.5vw, 36px)/1.16 var(--font-display); margin: 0 0 20px; }
+.note-preview h3 a, .note-preview h4 a { text-decoration: none; }
 .note-preview-copy > p:not(.note-meta) { color: var(--ink-2); }
 .note-preview .eq { font-size: 17px; padding: 16px 18px; }
 .note-teaser-result { font-size: 17px; color: var(--ink); margin: 22px 0; }
@@ -1109,6 +1109,7 @@ h2.title em { color: var(--gold); font-weight: 400; }
 
 @media (max-width: 420px) {
   .nav-links a.opt3 { display: none; }
+  .eq-note { min-height: 4.65em; }
 }
 @media (max-width: 360px) {
   .site-nav { gap: 12px; }

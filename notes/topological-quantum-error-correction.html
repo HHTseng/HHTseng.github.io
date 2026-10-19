@@ -303,6 +303,27 @@
       <p>Both checks are Hermitian involutions. The code space \(\mathcal C\subseteq\mathcal H\) is their simultaneous \(+1\) eigenspace.</p>
     </div>
     <p>The topology supplies \(d_1d_2=0\); the Pauli realization converts its evaluation into a commutation phase. For prime-dimensional qudits, replace qubits by \(\mathbb C^p\) and use compatible Weyl operators over \(\mathbb F_p\). A general coefficient ring requires additional representation data.</p>
+
+    <h3 id="invariant-subspaces">Invariant subspaces and correctable errors</h3>
+    <div class="note-formal">
+      <p><b>Proposition 4 — The code projector is a group average.</b> Let \(S=\langle A_v,B_f\rangle\subset U(\mathcal H)\) be the finite abelian Pauli stabilizer group, with \(-I\notin S\). Its common \(+1\) eigenspace is the invariant subspace</p>
+      <div class="eq note-diagram">\[
+      \mathcal C=\mathcal H^S:=\{\psi\in\mathcal H:g\psi=\psi\text{ for every }g\in S\},
+      \qquad P_{\mathcal C}=\frac1{|S|}\sum_{g\in S}g.
+      \]</div>
+      <p><i>Proof.</i> Closure under inverses gives \(P_{\mathcal C}^{\dagger}=P_{\mathcal C}\). Each element occurs \(|S|\) times in the double sum, so \(P_{\mathcal C}^2=P_{\mathcal C}\). Left multiplication permutes \(S\), hence \(gP_{\mathcal C}=P_{\mathcal C}\); conversely every invariant vector is fixed by the average. Thus \(\operatorname{im}P_{\mathcal C}=\mathcal H^S\). The Pauli trace identity gives \(\dim\mathcal C=2^n/|S|>0\).</p>
+    </div>
+    <p>More generally, for a finite group \(G\), a unitary representation \(U:G\to U(\mathcal H)\), and an irreducible character \(\chi:G\to\mathbb C\) of dimension \(d_\chi=\chi(e)\), the orthogonal isotypic projector is</p>
+    <div class="eq note-diagram">\[
+    P_\chi=\frac{d_\chi}{|G|}\sum_{g\in G}\overline{\chi(g)}\,U(g).
+    \]</div>
+    <p>Its image is the sum of all irreducible subrepresentations with character \(\chi\). Taking \(G=S\), \(U\) the inclusion, and \(\chi=1\) recovers the code projector. Cellular incidence therefore constructs the stabilizer group; group averaging selects its invariant quantum states.</p>
+    <p>An isotypic subspace is not automatically an error-correcting code. For a noise channel with Kraus operators \(E_a\in\operatorname{End}(\mathcal H)\), exact recovery on \(\mathcal C\) is equivalent to the <a href="https://arxiv.org/abs/quant-ph/9604034">Knill–Laflamme condition</a></p>
+    <div class="eq note-diagram">\[
+    P_{\mathcal C}E_a^{\dagger}E_bP_{\mathcal C}=c_{ab}P_{\mathcal C}
+    \qquad\text{for every }a,b,
+    \]</div>
+    <p>where \(c_{ab}\in\mathbb C\) is independent of the encoded state. This additional condition concerns the specified errors, not symmetry alone. The next section identifies the logical error classes left unresolved by the surface-code checks.</p>
   </section>
 
   <section id="logical-information" class="note-section" aria-labelledby="logical-title">
@@ -471,6 +492,7 @@
       <li>A. Yu. Kitaev, <a href="https://arxiv.org/abs/quant-ph/9707021"><em>Fault-tolerant quantum computation by anyons</em></a>, Annals of Physics 303 (2003): the toric-code realization.</li>
       <li>E. Dennis, A. Kitaev, A. Landahl, and J. Preskill, <a href="https://arxiv.org/abs/quant-ph/0110143"><em>Topological quantum memory</em></a>, Journal of Mathematical Physics 43 (2002): error chains, syndromes, and homological decoding.</li>
       <li>N. Delfosse, P. Iyer, and D. Poulin, <a href="https://arxiv.org/abs/1606.07116"><em>Generalized surface codes and packing of logical qubits</em></a> (2016): relative homology and mixed surface boundaries.</li>
+      <li>E. Knill and R. Laflamme, <a href="https://arxiv.org/abs/quant-ph/9604034"><em>A Theory of Quantum Error-Correcting Codes</em></a>, Physical Review A 55, 900 (1997): the exact subspace-code recovery criterion.</li>
     </ol>
   </section>
   <p class="note-back"><a href="../index.html#notes">← Back to research notes</a></p>

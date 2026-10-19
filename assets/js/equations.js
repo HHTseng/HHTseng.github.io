@@ -10,7 +10,6 @@
   if (!templates.length) return;
 
   const canvas = stage.querySelector('.eq-canvas');
-  const title = stage.querySelector('.eq-title');
   const note = stage.querySelector('.eq-note');
   const counter = stage.querySelector('.eq-count');
   const pager = stage.querySelector('.eq-pager');
@@ -76,22 +75,6 @@
     });
   }
 
-  function setText(tpl) {
-    if (!title || !note) return;           // the opening shows the equations alone
-    for (const el of [title, note]) el.style.opacity = 0;
-    setTimeout(() => {
-      title.textContent = tpl.dataset.title;
-      note.innerHTML = '';
-      note.append(tpl.dataset.note + ' ');
-      const src = document.createElement('span');
-      src.className = 'src';
-      src.textContent = '— ' + tpl.dataset.src;
-      note.appendChild(src);
-      title.style.opacity = 1;
-      note.style.opacity = 1;
-    }, reduce.matches ? 0 : 280);
-  }
-
   function show(i, opts = {}) {
     clearTimeout(timer);
     index = (i + templates.length) % templates.length;
@@ -113,7 +96,7 @@
 
     const svg = slide.querySelector('svg');
     if (svg) draw(svg, opts.instant || reduce.matches);
-    setText(tpl);
+    if (note) note.textContent = tpl.dataset.note;
 
     buttons.forEach((b, j) => b.setAttribute('aria-current', String(j === index)));
     if (counter) counter.textContent = `${ROMAN[index]} / ${ROMAN[templates.length - 1]}`;

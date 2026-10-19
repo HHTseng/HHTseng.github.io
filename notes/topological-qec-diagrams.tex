@@ -194,7 +194,8 @@ With $W_e(r):=\rho(re)$ and $U_e(r):=\Pi(re^\vee)$,
  \qquad A_v:=\Pi(\delta^0v^\vee)=\prod_e U_e([e:v]).
 \]
 These compositions are neither chain complexes nor exact sequences.
-Locality, unitarity, and cross-commutation require representation data.
+Locality, unitarity, and commutation between the two families require
+representation data.
 
 \subsection*{Binary realization, syndromes, and logical classes}
 
@@ -248,6 +249,50 @@ Hence $H_1(K,A;\mathbb F_2)\cong\mathbb F_2$: a path joining the two
 rough arcs represents the logical $Z$ class. Complementary smooth
 boundaries describe the dual paths for logical $X$, with the appropriate
 dual cellulation and consistent boundary assignments.
+
+\subsection*{Invariant subspaces and correctable errors}
+
+Let $S=\langle A_v,B_f\rangle\subset U(\mathcal H)$ be the finite
+abelian Pauli stabilizer group, with $-I\notin S$. Its invariant
+subspace and orthogonal projector are
+\[
+ \mathcal C=\mathcal H^S
+ :=\{\psi\in\mathcal H:g\psi=\psi\text{ for all }g\in S\},
+ \qquad
+ P_{\mathcal C}=\frac1{|S|}\sum_{g\in S}g.
+\]
+Indeed, closure under inverses gives $P_{\mathcal C}^{\dagger}=P_{\mathcal C}$;
+counting products gives $P_{\mathcal C}^2=P_{\mathcal C}$.
+Multiplication by a group element permutes the sum, so
+$\operatorname{im}P_{\mathcal C}=\mathcal H^S$.
+The Pauli trace identity yields $\dim\mathcal C=2^n/|S|>0$.
+
+More generally, let $G$ be a finite group, let
+$U:G\to U(\mathcal H)$ be a unitary representation, and let
+$\chi:G\to\mathbb C$ be an irreducible character of dimension
+$d_\chi=\chi(e)$. The orthogonal isotypic projector is
+\[
+ P_\chi=\frac{d_\chi}{|G|}
+ \sum_{g\in G}\overline{\chi(g)}\,U(g).
+\]
+Its image is the sum of the irreducible subrepresentations with
+character $\chi$. For $G=S$, with $U$ the inclusion and $\chi=1$,
+this reduces to the stabilizer code projector. Thus the cellular
+maps construct the checks, while group averaging selects their
+invariant quantum states.
+
+An isotypic subspace alone need not correct the specified noise.
+For a noise channel with Kraus operators
+$E_a\in\operatorname{End}(\mathcal H)$, exact recovery on
+$\mathcal C$ is equivalent to the Knill--Laflamme condition
+\[
+ P_{\mathcal C}E_a^{\dagger}E_bP_{\mathcal C}
+ =c_{ab}P_{\mathcal C}\qquad\text{for every }a,b,
+\]
+where $c_{ab}\in\mathbb C$ is independent of the encoded state.
+See E. Knill and R. Laflamme, \emph{A Theory of Quantum Error-Correcting
+Codes}, Physical Review A \textbf{55}, 900 (1997),
+arXiv:quant-ph/9604034.
 
 \subsection*{A worked planar patch}
 
